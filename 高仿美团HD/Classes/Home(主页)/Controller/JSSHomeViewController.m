@@ -11,8 +11,24 @@
 #import "UIBarButtonItem+Extension.h"
 #import "UIView+Extension.h"
 #import "JSSTopView.h"
+#import "JSSPopoverViewController.h"
 
 @interface JSSHomeViewController ()
+
+/**
+ *  分类item
+ */
+@property (nonatomic, weak) UIBarButtonItem *categoryItem;
+
+/**
+ *  地区item
+ */
+@property (nonatomic, weak) UIBarButtonItem *districtItem;
+
+/**
+ *  排序item
+ */
+@property (nonatomic, weak) UIBarButtonItem *sortItem;
 
 @end
 
@@ -30,16 +46,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
     [self.collectionView setBackgroundColor:JSSColor(230, 230, 230)];
-    
-    // Register cell classes
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
-    
     
     /**
      *  添加导航栏左边的子控件
@@ -57,7 +65,6 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)setupLeftView
 {
-    
     // 1.LOGO
     UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_meituan_logo"]];
     UIBarButtonItem *logoItem = [[UIBarButtonItem alloc] initWithCustomView:logoView];
@@ -66,16 +73,19 @@ static NSString * const reuseIdentifier = @"Cell";
     JSSTopView *categoryView = [JSSTopView topView];
     [categoryView dealWithTarget:self andAction:@selector(categoryViewDidClick)];
     UIBarButtonItem *categoryItem = [[UIBarButtonItem alloc] initWithCustomView:categoryView];
+    self.categoryItem = categoryItem;
     
     // 3.地区
     JSSTopView *districtView = [JSSTopView topView];
     [districtView dealWithTarget:self andAction:@selector(districtViewDidClick)];
     UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtView];
+    self.districtItem = districtItem;
     
     // 4.排序
     JSSTopView *sortView = [JSSTopView topView];
     [sortView dealWithTarget:self andAction:@selector(sortViewDidClick)];
     UIBarButtonItem *sortItem = [[UIBarButtonItem alloc] initWithCustomView:sortView];
+    self.sortItem = sortItem;
     
     [self.navigationItem setLeftBarButtonItems:@[logoItem, categoryItem, districtItem, sortItem]];
 }
@@ -85,7 +95,9 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)categoryViewDidClick
 {
-    NSLog(@"categoryViewDidClick");
+    JSSPopoverViewController *popoverVc = [[JSSPopoverViewController alloc] init];
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:popoverVc];
+    [popover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 /**
@@ -93,7 +105,7 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)districtViewDidClick
 {
-    NSLog(@"districtViewDidClick");
+
 }
 
 /**
@@ -101,7 +113,7 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)sortViewDidClick
 {
-    NSLog(@"sortViewDidClick");
+    
 }
 
 /**
@@ -117,18 +129,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.navigationItem setRightBarButtonItems:@[mapItem, searchItem]];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-#pragma mark <UICollectionViewDataSource>
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 0;
 }
@@ -140,41 +140,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell
-    
     return cell;
 }
-
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end
