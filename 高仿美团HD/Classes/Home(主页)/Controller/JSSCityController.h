@@ -1,5 +1,5 @@
 //
-//  JSSSubCell.h
+//  JSSCityController.h
 //  高仿美团HD
 //
 //  Created by JiShangsong on 15/7/10.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JSSSubCell : UITableViewCell
-
-+ (instancetype)cellWithTableView:(UITableView *)tableView;
+@interface JSSCityController : UIViewController
 
 @end

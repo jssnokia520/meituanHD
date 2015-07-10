@@ -16,17 +16,16 @@
 
 @implementation JSSTopView
 
-/**
- *  快速返回控件
- */
+- (void)awakeFromNib
+{
+    self.autoresizingMask = UIViewAutoresizingNone;
+}
+
 + (instancetype)topView
 {
     return [[[NSBundle mainBundle] loadNibNamed:@"JSSTopView" owner:nil options:nil] lastObject];
 }
 
-/**
- *  事件处理
- */
 - (void)dealWithTarget:(id)target andAction:(SEL)action
 {
     [self.button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];

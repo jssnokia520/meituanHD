@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F450C7F1B4F7D6100A1CBB6 /* JSSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C6B1B4F7D6100A1CBB6 /* JSSHomeViewController.m */; };
+		7F450C7F1B4F7D6100A1CBB6 /* JSSHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C6B1B4F7D6100A1CBB6 /* JSSHomeController.m */; };
 		7F450C801B4F7D6100A1CBB6 /* JSSTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C6E1B4F7D6100A1CBB6 /* JSSTopView.m */; };
 		7F450C811B4F7D6100A1CBB6 /* JSSTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F450C6F1B4F7D6100A1CBB6 /* JSSTopView.xib */; };
 		7F450C821B4F7D6100A1CBB6 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C731B4F7D6100A1CBB6 /* UIBarButtonItem+Extension.m */; };
@@ -35,9 +35,14 @@
 		7F450CBD1B4FB29600A1CBB6 /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CB01B4FB29600A1CBB6 /* NSObject+MJCoding.m */; };
 		7F450CBE1B4FB29600A1CBB6 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CB21B4FB29600A1CBB6 /* NSObject+MJKeyValue.m */; };
 		7F450CBF1B4FB29600A1CBB6 /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CB41B4FB29600A1CBB6 /* NSObject+MJMember.m */; };
-		7F450CC21B4FB35E00A1CBB6 /* JSSPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CC11B4FB35E00A1CBB6 /* JSSPopoverViewController.m */; };
+		7F450CC21B4FB35E00A1CBB6 /* JSSCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CC11B4FB35E00A1CBB6 /* JSSCategoryController.m */; };
 		7F450CC51B4FD47700A1CBB6 /* JSSMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CC41B4FD47700A1CBB6 /* JSSMainCell.m */; };
 		7F450CC81B4FD48600A1CBB6 /* JSSSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CC71B4FD48600A1CBB6 /* JSSSubCell.m */; };
+		7F450CCC1B4FF41D00A1CBB6 /* JSSDistrictController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CCA1B4FF41D00A1CBB6 /* JSSDistrictController.m */; };
+		7F450CCD1B4FF41D00A1CBB6 /* JSSDistrictController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F450CCB1B4FF41D00A1CBB6 /* JSSDistrictController.xib */; };
+		7F450CD11B4FFDB200A1CBB6 /* JSSCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CCF1B4FFDB200A1CBB6 /* JSSCityController.m */; };
+		7F450CD21B4FFDB200A1CBB6 /* JSSCityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F450CD01B4FFDB200A1CBB6 /* JSSCityController.xib */; };
+		7F450CD51B5001ED00A1CBB6 /* JSSCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CD41B5001ED00A1CBB6 /* JSSCityGroup.m */; };
 		7FE06D451B4F55BE006403F3 /* ____HDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D441B4F55BE006403F3 /* ____HDTests.m */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7F450C6A1B4F7D6100A1CBB6 /* JSSHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSHomeViewController.h; sourceTree = "<group>"; };
-		7F450C6B1B4F7D6100A1CBB6 /* JSSHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSHomeViewController.m; sourceTree = "<group>"; };
+		7F450C6A1B4F7D6100A1CBB6 /* JSSHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSHomeController.h; sourceTree = "<group>"; };
+		7F450C6B1B4F7D6100A1CBB6 /* JSSHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSHomeController.m; sourceTree = "<group>"; };
 		7F450C6D1B4F7D6100A1CBB6 /* JSSTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSTopView.h; sourceTree = "<group>"; };
 		7F450C6E1B4F7D6100A1CBB6 /* JSSTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSTopView.m; sourceTree = "<group>"; };
 		7F450C6F1B4F7D6100A1CBB6 /* JSSTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSSTopView.xib; sourceTree = "<group>"; };
@@ -101,12 +106,20 @@
 		7F450CB21B4FB29600A1CBB6 /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
 		7F450CB31B4FB29600A1CBB6 /* NSObject+MJMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJMember.h"; sourceTree = "<group>"; };
 		7F450CB41B4FB29600A1CBB6 /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
-		7F450CC01B4FB35E00A1CBB6 /* JSSPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSPopoverViewController.h; sourceTree = "<group>"; };
-		7F450CC11B4FB35E00A1CBB6 /* JSSPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSPopoverViewController.m; sourceTree = "<group>"; };
+		7F450CC01B4FB35E00A1CBB6 /* JSSCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSCategoryController.h; sourceTree = "<group>"; };
+		7F450CC11B4FB35E00A1CBB6 /* JSSCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSCategoryController.m; sourceTree = "<group>"; };
 		7F450CC31B4FD47700A1CBB6 /* JSSMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSMainCell.h; sourceTree = "<group>"; };
 		7F450CC41B4FD47700A1CBB6 /* JSSMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSMainCell.m; sourceTree = "<group>"; };
 		7F450CC61B4FD48600A1CBB6 /* JSSSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSSubCell.h; sourceTree = "<group>"; };
 		7F450CC71B4FD48600A1CBB6 /* JSSSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSSubCell.m; sourceTree = "<group>"; };
+		7F450CC91B4FF41D00A1CBB6 /* JSSDistrictController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSDistrictController.h; sourceTree = "<group>"; };
+		7F450CCA1B4FF41D00A1CBB6 /* JSSDistrictController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSDistrictController.m; sourceTree = "<group>"; };
+		7F450CCB1B4FF41D00A1CBB6 /* JSSDistrictController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSSDistrictController.xib; sourceTree = "<group>"; };
+		7F450CCE1B4FFDB200A1CBB6 /* JSSCityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSCityController.h; sourceTree = "<group>"; };
+		7F450CCF1B4FFDB200A1CBB6 /* JSSCityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSCityController.m; sourceTree = "<group>"; };
+		7F450CD01B4FFDB200A1CBB6 /* JSSCityController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSSCityController.xib; sourceTree = "<group>"; };
+		7F450CD31B5001ED00A1CBB6 /* JSSCityGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSCityGroup.h; sourceTree = "<group>"; };
+		7F450CD41B5001ED00A1CBB6 /* JSSCityGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSCityGroup.m; sourceTree = "<group>"; };
 		7FE06D251B4F55BE006403F3 /* 高仿美团HD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "高仿美团HD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE06D291B4F55BE006403F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FE06D3E1B4F55BE006403F3 /* 高仿美团HDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "高仿美团HDTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,10 +167,16 @@
 		7F450C691B4F7D6100A1CBB6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7F450C6A1B4F7D6100A1CBB6 /* JSSHomeViewController.h */,
-				7F450C6B1B4F7D6100A1CBB6 /* JSSHomeViewController.m */,
-				7F450CC01B4FB35E00A1CBB6 /* JSSPopoverViewController.h */,
-				7F450CC11B4FB35E00A1CBB6 /* JSSPopoverViewController.m */,
+				7F450C6A1B4F7D6100A1CBB6 /* JSSHomeController.h */,
+				7F450C6B1B4F7D6100A1CBB6 /* JSSHomeController.m */,
+				7F450CC01B4FB35E00A1CBB6 /* JSSCategoryController.h */,
+				7F450CC11B4FB35E00A1CBB6 /* JSSCategoryController.m */,
+				7F450CC91B4FF41D00A1CBB6 /* JSSDistrictController.h */,
+				7F450CCA1B4FF41D00A1CBB6 /* JSSDistrictController.m */,
+				7F450CCB1B4FF41D00A1CBB6 /* JSSDistrictController.xib */,
+				7F450CCE1B4FFDB200A1CBB6 /* JSSCityController.h */,
+				7F450CCF1B4FFDB200A1CBB6 /* JSSCityController.m */,
+				7F450CD01B4FFDB200A1CBB6 /* JSSCityController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -227,6 +246,8 @@
 			children = (
 				7F450C8E1B4FAE1100A1CBB6 /* JSSCategory.h */,
 				7F450C8F1B4FAE1100A1CBB6 /* JSSCategory.m */,
+				7F450CD31B5001ED00A1CBB6 /* JSSCityGroup.h */,
+				7F450CD41B5001ED00A1CBB6 /* JSSCityGroup.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -415,10 +436,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F450CD21B4FFDB200A1CBB6 /* JSSCityController.xib in Resources */,
 				7F450C961B4FAFE000A1CBB6 /* categories.plist in Resources */,
 				7F450C8C1B4F7DB300A1CBB6 /* JSSDropView.xib in Resources */,
 				7F450C9B1B4FB02700A1CBB6 /* Images.xcassets in Resources */,
 				7F450C991B4FAFE000A1CBB6 /* sorts.plist in Resources */,
+				7F450CCD1B4FF41D00A1CBB6 /* JSSDistrictController.xib in Resources */,
 				7F450C971B4FAFE000A1CBB6 /* cities.plist in Resources */,
 				7F450C811B4F7D6100A1CBB6 /* JSSTopView.xib in Resources */,
 				7F450C981B4FAFE000A1CBB6 /* cityGroups.plist in Resources */,
@@ -443,24 +466,27 @@
 				7F450CC81B4FD48600A1CBB6 /* JSSSubCell.m in Sources */,
 				7F450CBC1B4FB29600A1CBB6 /* MJTypeEncoding.m in Sources */,
 				7F450C901B4FAE1100A1CBB6 /* JSSCategory.m in Sources */,
+				7F450CD51B5001ED00A1CBB6 /* JSSCityGroup.m in Sources */,
 				7F450CB81B4FB29600A1CBB6 /* MJIvar.m in Sources */,
 				7F450CC51B4FD47700A1CBB6 /* JSSMainCell.m in Sources */,
 				7F450C841B4F7D6100A1CBB6 /* JSSNavigationController.m in Sources */,
 				7F450C871B4F7D6100A1CBB6 /* main.m in Sources */,
 				7F450C861B4F7D6100A1CBB6 /* JSSConst.m in Sources */,
+				7F450CCC1B4FF41D00A1CBB6 /* JSSDistrictController.m in Sources */,
 				7F450C851B4F7D6100A1CBB6 /* AppDelegate.m in Sources */,
 				7F450CBE1B4FB29600A1CBB6 /* NSObject+MJKeyValue.m in Sources */,
 				7F450C831B4F7D6100A1CBB6 /* UIView+Extension.m in Sources */,
 				7F450CB71B4FB29600A1CBB6 /* MJFoundation.m in Sources */,
 				7F450C821B4F7D6100A1CBB6 /* UIBarButtonItem+Extension.m in Sources */,
-				7F450C7F1B4F7D6100A1CBB6 /* JSSHomeViewController.m in Sources */,
+				7F450C7F1B4F7D6100A1CBB6 /* JSSHomeController.m in Sources */,
 				7F450CBF1B4FB29600A1CBB6 /* NSObject+MJMember.m in Sources */,
 				7F450C8A1B4F7DA200A1CBB6 /* JSSDropView.m in Sources */,
 				7F450CBB1B4FB29600A1CBB6 /* MJType.m in Sources */,
 				7F450CB61B4FB29600A1CBB6 /* MJConst.m in Sources */,
-				7F450CC21B4FB35E00A1CBB6 /* JSSPopoverViewController.m in Sources */,
+				7F450CC21B4FB35E00A1CBB6 /* JSSCategoryController.m in Sources */,
 				7F450CBD1B4FB29600A1CBB6 /* NSObject+MJCoding.m in Sources */,
 				7F450CBA1B4FB29600A1CBB6 /* MJMethod.m in Sources */,
+				7F450CD11B4FFDB200A1CBB6 /* JSSCityController.m in Sources */,
 				7F450CB91B4FB29600A1CBB6 /* MJMember.m in Sources */,
 				7F450C801B4F7D6100A1CBB6 /* JSSTopView.m in Sources */,
 			);

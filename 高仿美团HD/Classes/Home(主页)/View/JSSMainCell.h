@@ -10,9 +10,6 @@
 
 @interface JSSMainCell : UITableViewCell
 
-/**
- *  快速返回单元格
- */
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 
 @end

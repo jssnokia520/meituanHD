@@ -1,5 +1,5 @@
 //
-//  JSSPopoverViewController.h
+//  JSSCategoryController.h
 //  高仿美团HD
 //
 //  Created by JiShangsong on 15/7/10.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JSSPopoverViewController : UIViewController
+@interface JSSCategoryController : UIViewController
 
 @end

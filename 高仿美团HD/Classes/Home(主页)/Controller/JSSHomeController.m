@@ -1,19 +1,20 @@
 //
-//  JSSHomeViewController.m
+//  JSSHomeController.m
 //  高仿美团HD
 //
 //  Created by JiShangsong on 15/7/10.
 //  Copyright (c) 2015年 JiShangsong. All rights reserved.
 //
 
-#import "JSSHomeViewController.h"
+#import "JSSHomeController.h"
 #import "JSSConst.h"
 #import "UIBarButtonItem+Extension.h"
 #import "UIView+Extension.h"
 #import "JSSTopView.h"
-#import "JSSPopoverViewController.h"
+#import "JSSCategoryController.h"
+#import "JSSDistrictController.h"
 
-@interface JSSHomeViewController ()
+@interface JSSHomeController ()
 
 /**
  *  分类item
@@ -32,7 +33,7 @@
 
 @end
 
-@implementation JSSHomeViewController
+@implementation JSSHomeController
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -95,8 +96,8 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)categoryViewDidClick
 {
-    JSSPopoverViewController *popoverVc = [[JSSPopoverViewController alloc] init];
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:popoverVc];
+    JSSCategoryController *categoryVc = [[JSSCategoryController alloc] init];
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:categoryVc];
     [popover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
@@ -105,7 +106,9 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)districtViewDidClick
 {
-
+    JSSDistrictController *districtVc = [[JSSDistrictController alloc] init];
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:districtVc];
+    [popover presentPopoverFromBarButtonItem:self.districtItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 /**

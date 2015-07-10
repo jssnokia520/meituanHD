@@ -10,14 +10,8 @@
 
 @interface JSSTopView : UIView
 
-/**
- *  快速返回控件
- */
 + (instancetype)topView;
 
-/**
- *  事件处理
- */
 - (void)dealWithTarget:(id)target andAction:(SEL)action;
 
 @end

@@ -27,22 +27,9 @@
     [self setAutoresizingMask:UIViewAutoresizingNone];
 }
 
-/**
- *  快速返回控件
- */
 + (instancetype)dropView
 {
     return [[[NSBundle mainBundle] loadNibNamed:@"JSSDropView" owner:nil options:nil] lastObject];
-}
-
-/**
- *  分类模型数组
- */
-- (void)setCategories:(NSArray *)categories
-{
-    _categories = categories;
-    
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

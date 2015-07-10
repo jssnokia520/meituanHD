@@ -10,9 +10,6 @@
 
 @implementation JSSSubCell
 
-/**
- *  快速返回单元格
- */
 + (instancetype)cellWithTableView:(UITableView *)tableView
 {
     static NSString *subID = @"subCell";

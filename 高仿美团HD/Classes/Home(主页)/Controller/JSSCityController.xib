@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JSSCityController">
+            <connections>
+                <outlet property="searchBar" destination="zlZ-Vo-22a" id="8li-dg-EwX"/>
+                <outlet property="tableView" destination="0d7-Cc-1j5" id="KAq-L6-e4i"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" placeholder="请输入城市名或拼音" backgroundImage="bg_login_textfield" translatesAutoresizingMaskIntoConstraints="NO" id="zlZ-Vo-22a">
+                    <rect key="frame" x="10" y="5" width="580" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="PhK-SW-WXT"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="M6H-0b-BDI"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0d7-Cc-1j5">
+                    <rect key="frame" x="0.0" y="40" width="600" height="560"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="DAO-8j-7xb"/>
+                        <outlet property="delegate" destination="-1" id="hWw-QS-1V3"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="0d7-Cc-1j5" firstAttribute="top" secondItem="zlZ-Vo-22a" secondAttribute="bottom" constant="5" id="952-hW-Fg1"/>
+                <constraint firstItem="0d7-Cc-1j5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9dq-ZV-UOt"/>
+                <constraint firstItem="zlZ-Vo-22a" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Kg3-bw-dW0"/>
+                <constraint firstItem="zlZ-Vo-22a" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="Nsw-3f-kt7"/>
+                <constraint firstAttribute="bottom" secondItem="0d7-Cc-1j5" secondAttribute="bottom" id="Tl9-yM-KZW"/>
+                <constraint firstAttribute="trailing" secondItem="zlZ-Vo-22a" secondAttribute="trailing" constant="10" id="VM1-zV-Y5y"/>
+                <constraint firstAttribute="trailing" secondItem="0d7-Cc-1j5" secondAttribute="trailing" id="ug3-er-Jcd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_login_textfield" width="9" height="11"/>
+    </resources>
+</document>
