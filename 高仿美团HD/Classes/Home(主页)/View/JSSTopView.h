@@ -15,4 +15,9 @@
  */
 + (instancetype)topView;
 
+/**
+ *  事件处理
+ */
+- (void)dealWithTarget:(id)target andAction:(SEL)action;
+
 @end

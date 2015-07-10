@@ -8,6 +8,12 @@
 
 #import "JSSTopView.h"
 
+@interface JSSTopView ()
+
+@property (weak, nonatomic) IBOutlet UIButton *button;
+
+@end
+
 @implementation JSSTopView
 
 /**
@@ -16,6 +22,14 @@
 + (instancetype)topView
 {
     return [[[NSBundle mainBundle] loadNibNamed:@"JSSTopView" owner:nil options:nil] lastObject];
+}
+
+/**
+ *  事件处理
+ */
+- (void)dealWithTarget:(id)target andAction:(SEL)action
+{
+    [self.button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
 
 @end

@@ -64,17 +64,44 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 2.类别
     JSSTopView *categoryView = [JSSTopView topView];
+    [categoryView dealWithTarget:self andAction:@selector(categoryViewDidClick)];
     UIBarButtonItem *categoryItem = [[UIBarButtonItem alloc] initWithCustomView:categoryView];
     
     // 3.地区
     JSSTopView *districtView = [JSSTopView topView];
+    [districtView dealWithTarget:self andAction:@selector(districtViewDidClick)];
     UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtView];
     
     // 4.排序
     JSSTopView *sortView = [JSSTopView topView];
+    [sortView dealWithTarget:self andAction:@selector(sortViewDidClick)];
     UIBarButtonItem *sortItem = [[UIBarButtonItem alloc] initWithCustomView:sortView];
     
     [self.navigationItem setLeftBarButtonItems:@[logoItem, categoryItem, districtItem, sortItem]];
+}
+
+/**
+ *  类别点击监听方法
+ */
+- (void)categoryViewDidClick
+{
+    NSLog(@"categoryViewDidClick");
+}
+
+/**
+ *  地区点击监听方法
+ */
+- (void)districtViewDidClick
+{
+    NSLog(@"districtViewDidClick");
+}
+
+/**
+ *  排序点击监听方法
+ */
+- (void)sortViewDidClick
+{
+    NSLog(@"sortViewDidClick");
 }
 
 /**
