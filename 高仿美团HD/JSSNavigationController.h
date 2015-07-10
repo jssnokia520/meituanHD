@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  JSSNavigationController.h
 //  高仿美团HD
 //
 //  Created by JiShangsong on 15/7/10.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface JSSNavigationController : UINavigationController
 
 @end
-

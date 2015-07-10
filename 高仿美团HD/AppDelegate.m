@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "JSSHomeViewController.h"
+#import "JSSNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    JSSNavigationController *navigationVc = [[JSSNavigationController alloc] initWithRootViewController:[[JSSHomeViewController alloc] init]];
+    [self.window setRootViewController:navigationVc];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

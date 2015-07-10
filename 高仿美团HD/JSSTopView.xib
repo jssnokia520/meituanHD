@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="JSSTopView">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kzi-kd-Nth" userLabel="分割线">
+                    <rect key="frame" x="10" y="5" width="1" height="25"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="3UU-QT-L7U"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFN-uS-J2K">
+                    <rect key="frame" x="41" y="0.0" width="69" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="nSH-Zs-pPx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="子标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0z-Zq-s0E">
+                    <rect key="frame" x="41" y="15" width="69" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="7kF-Zg-8ap"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Rl-rg-S7B">
+                    <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                    <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="icon_district">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" image="icon_district_highlighted"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VFN-uS-J2K" secondAttribute="trailing" constant="10" id="27v-0e-rH5"/>
+                <constraint firstAttribute="bottom" secondItem="0Rl-rg-S7B" secondAttribute="bottom" id="4Vf-D7-Gda"/>
+                <constraint firstAttribute="bottom" secondItem="t0z-Zq-s0E" secondAttribute="bottom" id="5SR-Cn-stP"/>
+                <constraint firstItem="t0z-Zq-s0E" firstAttribute="leading" secondItem="kzi-kd-Nth" secondAttribute="trailing" constant="30" id="Fec-nI-tmy"/>
+                <constraint firstItem="VFN-uS-J2K" firstAttribute="leading" secondItem="kzi-kd-Nth" secondAttribute="trailing" constant="30" id="TMa-rY-JX1"/>
+                <constraint firstItem="0Rl-rg-S7B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aZQ-FF-Yl3"/>
+                <constraint firstItem="0Rl-rg-S7B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dY2-pH-tr2"/>
+                <constraint firstItem="VFN-uS-J2K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gO9-JW-Tlc"/>
+                <constraint firstAttribute="bottom" secondItem="kzi-kd-Nth" secondAttribute="bottom" constant="5" id="kjM-A1-iCu"/>
+                <constraint firstItem="kzi-kd-Nth" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="oFB-pZ-QYo"/>
+                <constraint firstAttribute="trailing" secondItem="0Rl-rg-S7B" secondAttribute="trailing" id="p99-vI-Fqv"/>
+                <constraint firstAttribute="trailing" secondItem="t0z-Zq-s0E" secondAttribute="trailing" constant="10" id="rEj-6M-FAm"/>
+                <constraint firstItem="kzi-kd-Nth" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="uuJ-Yq-QZM"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="109" y="247.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_district" width="30" height="30"/>
+        <image name="icon_district_highlighted" width="30" height="30"/>
+    </resources>
+</document>

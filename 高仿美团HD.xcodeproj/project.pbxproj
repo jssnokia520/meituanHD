@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F450C581B4F6B8B00A1CBB6 /* JSSConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C571B4F6B8B00A1CBB6 /* JSSConst.m */; };
+		7F450C5B1B4F6BEE00A1CBB6 /* JSSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C5A1B4F6BEE00A1CBB6 /* JSSNavigationController.m */; };
+		7F450C5E1B4F6D1200A1CBB6 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C5D1B4F6D1200A1CBB6 /* UIView+Extension.m */; };
+		7F450C611B4F6D1D00A1CBB6 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C601B4F6D1D00A1CBB6 /* UIBarButtonItem+Extension.m */; };
+		7F450C641B4F703100A1CBB6 /* JSSTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C631B4F703100A1CBB6 /* JSSTopView.m */; };
+		7F450C661B4F704200A1CBB6 /* JSSTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F450C651B4F704200A1CBB6 /* JSSTopView.xib */; };
 		7FE06D2B1B4F55BE006403F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D2A1B4F55BE006403F3 /* main.m */; };
 		7FE06D2E1B4F55BE006403F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D2D1B4F55BE006403F3 /* AppDelegate.m */; };
-		7FE06D311B4F55BE006403F3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D301B4F55BE006403F3 /* ViewController.m */; };
-		7FE06D341B4F55BE006403F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE06D321B4F55BE006403F3 /* Main.storyboard */; };
 		7FE06D361B4F55BE006403F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE06D351B4F55BE006403F3 /* Images.xcassets */; };
 		7FE06D451B4F55BE006403F3 /* ____HDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D441B4F55BE006403F3 /* ____HDTests.m */; };
+		7FE06D501B4F680E006403F3 /* JSSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D4F1B4F680E006403F3 /* JSSHomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,18 +31,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F450C561B4F6B8B00A1CBB6 /* JSSConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSConst.h; sourceTree = "<group>"; };
+		7F450C571B4F6B8B00A1CBB6 /* JSSConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSConst.m; sourceTree = "<group>"; };
+		7F450C591B4F6BEE00A1CBB6 /* JSSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSNavigationController.h; sourceTree = "<group>"; };
+		7F450C5A1B4F6BEE00A1CBB6 /* JSSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSNavigationController.m; sourceTree = "<group>"; };
+		7F450C5C1B4F6D1200A1CBB6 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		7F450C5D1B4F6D1200A1CBB6 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		7F450C5F1B4F6D1D00A1CBB6 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
+		7F450C601B4F6D1D00A1CBB6 /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
+		7F450C621B4F703100A1CBB6 /* JSSTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSTopView.h; sourceTree = "<group>"; };
+		7F450C631B4F703100A1CBB6 /* JSSTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSTopView.m; sourceTree = "<group>"; };
+		7F450C651B4F704200A1CBB6 /* JSSTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSSTopView.xib; sourceTree = "<group>"; };
 		7FE06D251B4F55BE006403F3 /* 高仿美团HD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "高仿美团HD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE06D291B4F55BE006403F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FE06D2A1B4F55BE006403F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7FE06D2C1B4F55BE006403F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7FE06D2D1B4F55BE006403F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7FE06D2F1B4F55BE006403F3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7FE06D301B4F55BE006403F3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		7FE06D331B4F55BE006403F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7FE06D351B4F55BE006403F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7FE06D3E1B4F55BE006403F3 /* 高仿美团HDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "高仿美团HDTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE06D431B4F55BE006403F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FE06D441B4F55BE006403F3 /* ____HDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____HDTests.m"; sourceTree = "<group>"; };
+		7FE06D4E1B4F680E006403F3 /* JSSHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSHomeViewController.h; sourceTree = "<group>"; };
+		7FE06D4F1B4F680E006403F3 /* JSSHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSHomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +94,21 @@
 		7FE06D271B4F55BE006403F3 /* 高仿美团HD */ = {
 			isa = PBXGroup;
 			children = (
+				7F450C5F1B4F6D1D00A1CBB6 /* UIBarButtonItem+Extension.h */,
+				7F450C601B4F6D1D00A1CBB6 /* UIBarButtonItem+Extension.m */,
+				7F450C5C1B4F6D1200A1CBB6 /* UIView+Extension.h */,
+				7F450C5D1B4F6D1200A1CBB6 /* UIView+Extension.m */,
 				7FE06D2C1B4F55BE006403F3 /* AppDelegate.h */,
 				7FE06D2D1B4F55BE006403F3 /* AppDelegate.m */,
-				7FE06D2F1B4F55BE006403F3 /* ViewController.h */,
-				7FE06D301B4F55BE006403F3 /* ViewController.m */,
-				7FE06D321B4F55BE006403F3 /* Main.storyboard */,
-				7FE06D351B4F55BE006403F3 /* Images.xcassets */,
+				7FE06D4E1B4F680E006403F3 /* JSSHomeViewController.h */,
+				7FE06D4F1B4F680E006403F3 /* JSSHomeViewController.m */,
+				7F450C591B4F6BEE00A1CBB6 /* JSSNavigationController.h */,
+				7F450C5A1B4F6BEE00A1CBB6 /* JSSNavigationController.m */,
+				7F450C561B4F6B8B00A1CBB6 /* JSSConst.h */,
+				7F450C571B4F6B8B00A1CBB6 /* JSSConst.m */,
+				7F450C621B4F703100A1CBB6 /* JSSTopView.h */,
+				7F450C631B4F703100A1CBB6 /* JSSTopView.m */,
+				7F450C651B4F704200A1CBB6 /* JSSTopView.xib */,
 				7FE06D281B4F55BE006403F3 /* Supporting Files */,
 			);
 			path = "高仿美团HD";
@@ -93,6 +117,7 @@
 		7FE06D281B4F55BE006403F3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7FE06D351B4F55BE006403F3 /* Images.xcassets */,
 				7FE06D291B4F55BE006403F3 /* Info.plist */,
 				7FE06D2A1B4F55BE006403F3 /* main.m */,
 			);
@@ -197,8 +222,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FE06D341B4F55BE006403F3 /* Main.storyboard in Resources */,
 				7FE06D361B4F55BE006403F3 /* Images.xcassets in Resources */,
+				7F450C661B4F704200A1CBB6 /* JSSTopView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,8 +241,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FE06D311B4F55BE006403F3 /* ViewController.m in Sources */,
+				7F450C5E1B4F6D1200A1CBB6 /* UIView+Extension.m in Sources */,
+				7F450C611B4F6D1D00A1CBB6 /* UIBarButtonItem+Extension.m in Sources */,
+				7F450C581B4F6B8B00A1CBB6 /* JSSConst.m in Sources */,
+				7F450C5B1B4F6BEE00A1CBB6 /* JSSNavigationController.m in Sources */,
 				7FE06D2E1B4F55BE006403F3 /* AppDelegate.m in Sources */,
+				7F450C641B4F703100A1CBB6 /* JSSTopView.m in Sources */,
+				7FE06D501B4F680E006403F3 /* JSSHomeViewController.m in Sources */,
 				7FE06D2B1B4F55BE006403F3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,17 +269,6 @@
 			targetProxy = 7FE06D3F1B4F55BE006403F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		7FE06D321B4F55BE006403F3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7FE06D331B4F55BE006403F3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7FE06D461B4F55BE006403F3 /* Debug */ = {
@@ -409,6 +428,7 @@
 				7FE06D4A1B4F55BE006403F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FE06D4B1B4F55BE006403F3 /* Build configuration list for PBXNativeTarget "高仿美团HDTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +437,7 @@
 				7FE06D4D1B4F55BE006403F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
