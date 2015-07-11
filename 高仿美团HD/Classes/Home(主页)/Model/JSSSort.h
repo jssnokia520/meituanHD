@@ -1,5 +1,5 @@
 //
-//  JSSMetaTool.h
+//  JSSSort.h
 //  高仿美团HD
 //
 //  Created by JiShangsong on 15/7/11.
@@ -8,21 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JSSMetaTool : NSObject
+@interface JSSSort : NSObject
 
 /**
- *  分类数据
+ *  排序名称
  */
-+ (NSArray *)categories;
+@property (nonatomic, copy) NSString *label;
 
 /**
- *  城市数据
+ *  排序的值
  */
-+ (NSArray *)cities;
-
-/**
- *  排序数据
- */
-+ (NSArray *)sorts;
+@property (nonatomic, assign) NSInteger value;
 
 @end

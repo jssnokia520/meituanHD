@@ -10,9 +10,11 @@
 #import "JSSCategory.h"
 #import "JSSCity.h"
 #import "MJExtension.h"
+#import "JSSSort.h"
 
 static NSArray *_categories;
 static NSArray *_cities;
+static NSArray *_sorts;
 
 @implementation JSSMetaTool
 
@@ -36,6 +38,17 @@ static NSArray *_cities;
         _cities = [JSSCity objectArrayWithFilename:@"cities.plist"];
     }
     return _cities;
+}
+
+/**
+ *  排序数据
+ */
++ (NSArray *)sorts
+{
+    if (_sorts == nil) {
+        _sorts = [JSSSort objectArrayWithFilename:@"sorts.plist"];
+    }
+    return _sorts;
 }
 
 @end

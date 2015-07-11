@@ -56,14 +56,4 @@
     return region.subregions;
 }
 
-- (NSString *)iconForMainTableAtIndex:(NSInteger)index
-{
-    return nil;
-}
-
-- (NSString *)highIconForMainTableAtIndex:(NSInteger)index
-{
-    return nil;
-}
-
 @end

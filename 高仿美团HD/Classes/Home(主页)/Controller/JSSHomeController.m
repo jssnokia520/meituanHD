@@ -15,6 +15,7 @@
 #import "JSSDistrictController.h"
 #import "JSSMetaTool.h"
 #import "JSSCity.h"
+#import "JSSSortController.h"
 
 @interface JSSHomeController ()
 
@@ -138,7 +139,9 @@
  */
 - (void)sortViewDidClick
 {
-    
+    JSSSortController *sortVc = [[JSSSortController alloc] init];
+    UIPopoverController *popoverVc = [[UIPopoverController alloc] initWithContentViewController:sortVc];
+    [popoverVc presentPopoverFromBarButtonItem:self.sortItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 /**

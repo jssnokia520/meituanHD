@@ -50,8 +50,14 @@
         cell = [JSSMainCell cellWithTableView:tableView];
         
         [cell.textLabel setText:[self.dataSource titleForMainTableAtIndex:indexPath.row]];
-        [cell.imageView setImage:[UIImage imageNamed:[self.dataSource iconForMainTableAtIndex:indexPath.row]]];
-        [cell.imageView setHighlightedImage:[UIImage imageNamed:[self.dataSource highIconForMainTableAtIndex:indexPath.row]]];
+        
+        if ([self.dataSource respondsToSelector:@selector(iconForMainTableAtIndex:)]) {
+            [cell.imageView setImage:[UIImage imageNamed:[self.dataSource iconForMainTableAtIndex:indexPath.row]]];
+        }
+        
+        if ([self.dataSource respondsToSelector:@selector(highIconForMainTableAtIndex:)]) {
+            [cell.imageView setHighlightedImage:[UIImage imageNamed:[self.dataSource highIconForMainTableAtIndex:indexPath.row]]];
+        }
         
         NSArray *subArray = [self.dataSource subArrayForMainTableAtIndex:indexPath.row];
         if (subArray.count) {
