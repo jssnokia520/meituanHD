@@ -14,4 +14,8 @@
 
 - (void)dealWithTarget:(id)target andAction:(SEL)action;
 
+- (void)setTitle:(NSString *)title;
+- (void)setSubTitle:(NSString *)subTitle;
+- (void)setIocn:(NSString *)icon highIcon:(NSString *)highIcon;
+
 @end

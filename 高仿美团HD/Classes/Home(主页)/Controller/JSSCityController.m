@@ -36,6 +36,8 @@
         
         [searchVc.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
         [searchVc.tableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.searchBar];
+        
+        _searchVc = searchVc;
     }
     return _searchVc;
 }
@@ -145,9 +147,18 @@
 {
     if (searchText.length) {
         [self.searchVc.tableView setHidden:NO];
+        [self.searchVc setSearchText:searchText];
     } else {
         [self.searchVc.tableView setHidden:YES];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JSSCityGroup *cityGroup = self.citygroups[indexPath.section];
+    NSArray *cities = cityGroup.cities;
+    [JSSNotificationCenter postNotificationName:JSSCityDidSelected object:nil userInfo:@{JSSSelectedCity : cities[indexPath.row]}];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

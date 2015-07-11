@@ -10,4 +10,7 @@
 
 @implementation JSSConst
 
+NSString * const JSSCityDidSelected = @"JSSCityDidSelected";
+NSString * const JSSSelectedCity = @"JSSSelectedCity";
+
 @end

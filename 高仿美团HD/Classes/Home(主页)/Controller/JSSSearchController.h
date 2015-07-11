@@ -10,4 +10,9 @@
 
 @interface JSSSearchController : UITableViewController
 
+/**
+ *  搜索文字
+ */
+@property (nonatomic, copy) NSString *searchText;
+
 @end

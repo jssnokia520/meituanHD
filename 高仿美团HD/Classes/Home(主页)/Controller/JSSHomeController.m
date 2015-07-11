@@ -59,6 +59,20 @@ static NSString * const reuseIdentifier = @"Cell";
      *  添加导航栏右边的子控件
      */
     [self setupRightView];
+    
+    [JSSNotificationCenter addObserver:self selector:@selector(cityDidSelected:) name:JSSCityDidSelected object:nil];
+}
+
+- (void)cityDidSelected:(NSNotification *)notification
+{
+    NSString *cityName = notification.userInfo[JSSSelectedCity];
+    JSSTopView *districtTopView = (JSSTopView *)self.districtItem.customView;
+    [districtTopView setTitle:[NSString stringWithFormat:@"%@-全部", cityName]];
+}
+
+- (void)dealloc
+{
+    [JSSNotificationCenter removeObserver:self];
 }
 
 /**

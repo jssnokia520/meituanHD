@@ -11,6 +11,8 @@
 @interface JSSTopView ()
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 
 @end
 
@@ -29,6 +31,22 @@
 - (void)dealWithTarget:(id)target andAction:(SEL)action
 {
     [self.button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)setTitle:(NSString *)title
+{
+    [self.titleLabel setText:title];
+}
+
+- (void)setSubTitle:(NSString *)subTitle
+{
+    [self.subTitleLabel setText:subTitle];
+}
+
+- (void)setIocn:(NSString *)icon highIcon:(NSString *)highIcon
+{
+    [self.button setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
+    [self.button setImage:[UIImage imageNamed:highIcon] forState:UIControlStateHighlighted];
 }
 
 @end
