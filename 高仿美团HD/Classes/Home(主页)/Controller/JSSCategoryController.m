@@ -18,14 +18,15 @@
 
 @implementation JSSCategoryController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
+- (void)loadView
+{
+    [super loadView];
+    
     NSArray *categories = [JSSCategory objectArrayWithFilename:@"categories.plist"];
     JSSDropView *dropView = [JSSDropView dropView];
     dropView.categories = categories;
     self.preferredContentSize = dropView.size;
-    [self.view addSubview:dropView];
+    self.view = dropView;
 }
 
 @end

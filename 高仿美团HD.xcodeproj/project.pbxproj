@@ -44,6 +44,8 @@
 		7F450CD21B4FFDB200A1CBB6 /* JSSCityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F450CD01B4FFDB200A1CBB6 /* JSSCityController.xib */; };
 		7F450CD51B5001ED00A1CBB6 /* JSSCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CD41B5001ED00A1CBB6 /* JSSCityGroup.m */; };
 		7FE06D451B4F55BE006403F3 /* ____HDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D441B4F55BE006403F3 /* ____HDTests.m */; };
+		7FFA0BE91B50C0DB00DEA357 /* JSSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BE81B50C0DB00DEA357 /* JSSSearchController.m */; };
+		7FFA0BEC1B50C18D00DEA357 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BEB1B50C18D00DEA357 /* UIView+AutoLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,10 @@
 		7FE06D3E1B4F55BE006403F3 /* 高仿美团HDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "高仿美团HDTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE06D431B4F55BE006403F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FE06D441B4F55BE006403F3 /* ____HDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____HDTests.m"; sourceTree = "<group>"; };
+		7FFA0BE71B50C0DB00DEA357 /* JSSSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSSearchController.h; sourceTree = "<group>"; };
+		7FFA0BE81B50C0DB00DEA357 /* JSSSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSSearchController.m; sourceTree = "<group>"; };
+		7FFA0BEA1B50C17E00DEA357 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
+		7FFA0BEB1B50C18D00DEA357 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +183,8 @@
 				7F450CCE1B4FFDB200A1CBB6 /* JSSCityController.h */,
 				7F450CCF1B4FFDB200A1CBB6 /* JSSCityController.m */,
 				7F450CD01B4FFDB200A1CBB6 /* JSSCityController.xib */,
+				7FFA0BE71B50C0DB00DEA357 /* JSSSearchController.h */,
+				7FFA0BE81B50C0DB00DEA357 /* JSSSearchController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -212,6 +220,8 @@
 		7F450C711B4F7D6100A1CBB6 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7FFA0BEA1B50C17E00DEA357 /* UIView+AutoLayout.h */,
+				7FFA0BEB1B50C18D00DEA357 /* UIView+AutoLayout.m */,
 				7F450C721B4F7D6100A1CBB6 /* UIBarButtonItem+Extension.h */,
 				7F450C731B4F7D6100A1CBB6 /* UIBarButtonItem+Extension.m */,
 				7F450C741B4F7D6100A1CBB6 /* UIView+Extension.h */,
@@ -472,6 +482,7 @@
 				7F450C841B4F7D6100A1CBB6 /* JSSNavigationController.m in Sources */,
 				7F450C871B4F7D6100A1CBB6 /* main.m in Sources */,
 				7F450C861B4F7D6100A1CBB6 /* JSSConst.m in Sources */,
+				7FFA0BE91B50C0DB00DEA357 /* JSSSearchController.m in Sources */,
 				7F450CCC1B4FF41D00A1CBB6 /* JSSDistrictController.m in Sources */,
 				7F450C851B4F7D6100A1CBB6 /* AppDelegate.m in Sources */,
 				7F450CBE1B4FB29600A1CBB6 /* NSObject+MJKeyValue.m in Sources */,
@@ -482,6 +493,7 @@
 				7F450CBF1B4FB29600A1CBB6 /* NSObject+MJMember.m in Sources */,
 				7F450C8A1B4F7DA200A1CBB6 /* JSSDropView.m in Sources */,
 				7F450CBB1B4FB29600A1CBB6 /* MJType.m in Sources */,
+				7FFA0BEC1B50C18D00DEA357 /* UIView+AutoLayout.m in Sources */,
 				7F450CB61B4FB29600A1CBB6 /* MJConst.m in Sources */,
 				7F450CC21B4FB35E00A1CBB6 /* JSSCategoryController.m in Sources */,
 				7F450CBD1B4FB29600A1CBB6 /* NSObject+MJCoding.m in Sources */,

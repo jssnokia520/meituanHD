@@ -11,23 +11,40 @@
 #import "JSSCityGroup.h"
 #import "MJExtension.h"
 #import "JSSConst.h"
+#import "JSSSearchController.h"
+#import "UIView+AutoLayout.h"
 
 @interface JSSCityController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIButton *coverButton;
 
-@property (nonatomic, weak) UIView *cover;
 @property (nonatomic, strong) NSArray *citygroups;
+@property (nonatomic, weak) JSSSearchController *searchVc;
 
 @end
 
 @implementation JSSCityController
 
+- (JSSSearchController *)searchVc
+{
+    if (_searchVc == nil) {
+        JSSSearchController *searchVc = [[JSSSearchController alloc] init];
+        [self addChildViewController:searchVc];
+        [self.view addSubview:searchVc.tableView];
+        
+        [searchVc.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
+        [searchVc.tableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.searchBar];
+    }
+    return _searchVc;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.tableView setSectionIndexColor:[UIColor blackColor]];
+    [self.searchBar setTintColor:JSSColor(20, 178, 160)];
     
     [self setTitle:@"切换城市"];
     UIBarButtonItem *leftItem = [UIBarButtonItem itemWithTarget:self action:@selector(close) image:@"btn_navigation_close" highlightedImage:@"btn_navigation_close_hl"];
@@ -86,13 +103,14 @@
     [self.navigationController setNavigationBarHidden:YES];
     
     // 2.添加蒙板
-    UIView *cover = [[UIView alloc] initWithFrame:self.tableView.frame];
-    [cover setBackgroundColor:JSSColor(82, 84, 87)];
-    [cover setAlpha:0.5];
-    self.cover = cover;
-    [self.view addSubview:cover];
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.coverButton setAlpha:0.5];
+    }];
     
-    // 3.搜索框背景
+    // 3.添加取消按钮
+    [self.searchBar setShowsCancelButton:YES animated:YES];
+    
+    // 4.搜索框背景
     [self.searchBar setBackgroundImage:[UIImage imageNamed:@"bg_login_textfield_hl"]];
     
 }
@@ -103,10 +121,33 @@
     [self.navigationController setNavigationBarHidden:NO];
     
     // 2.移除蒙板
-    [self.cover removeFromSuperview];
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.coverButton setAlpha:0];
+    }];
     
-    // 3.搜索框背景
+    // 3.移除取消按钮
+    [self.searchBar setShowsCancelButton:NO animated:YES];
+    
+    // 4.搜索框背景
     [self.searchBar setBackgroundImage:[UIImage imageNamed:@"bg_login_textfield"]];
+}
+
+- (IBAction)coverButtonClick {
+    [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self coverButtonClick];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if (searchText.length) {
+        [self.searchVc.tableView setHidden:NO];
+    } else {
+        [self.searchVc.tableView setHidden:YES];
+    }
 }
 
 @end
