@@ -10,6 +10,38 @@
 #import "JSSMetaTool.h"
 #import "JSSSort.h"
 #import "UIView+Extension.h"
+#import "JSSConst.h"
+
+@interface JSSSortButton : UIButton
+
+@property (nonatomic, strong) JSSSort *sort;
+
+@end
+
+@implementation JSSSortButton
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        [self setBackgroundImage:[UIImage imageNamed:@"btn_filter_normal"] forState:UIControlStateNormal];
+        [self setBackgroundImage:[UIImage imageNamed:@"btn_filter_selected"] forState:UIControlStateHighlighted];
+    }
+    
+    return self;
+}
+
+- (void)setSort:(JSSSort *)sort
+{
+    _sort = sort;
+    
+    [self setTitle:sort.label forState:UIControlStateNormal];
+}
+
+@end
 
 @interface JSSSortController ()
 
@@ -27,28 +59,29 @@
     CGFloat height = 0;
     
     for (NSInteger i = 0; i < sorts.count; i++) {
-        UIButton *button = [[UIButton alloc] init];
+        JSSSortButton *sortButton = [[JSSSortButton alloc] init];
+        [sortButton setSort:sorts[i]];
         
-        [button setX:buttonMargin];
-        [button setY:buttonMargin + (buttonMargin + buttonHeight) * i];
-        [button setWidth:buttonWidth];
-        [button setHeight:buttonHeight];
+        [sortButton setX:buttonMargin];
+        [sortButton setY:buttonMargin + (buttonMargin + buttonHeight) * i];
+        [sortButton setWidth:buttonWidth];
+        [sortButton setHeight:buttonHeight];
         
-        JSSSort *sort = sorts[i];
-        [button setTitle:sort.label forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-        [button setBackgroundImage:[UIImage imageNamed:@"btn_filter_normal"] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"btn_filter_selected"] forState:UIControlStateHighlighted];
+        [sortButton addTarget:self action:@selector(sortButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        [self.view addSubview:button];
+        [self.view addSubview:sortButton];
         
-        height = CGRectGetMaxY(button.frame);
+        height = CGRectGetMaxY(sortButton.frame);
     }
     
     CGFloat width = buttonWidth + buttonMargin * 2;
     height += buttonMargin;
     [self setPreferredContentSize:CGSizeMake(width, height)];
+}
+
+- (void)sortButtonClick:(JSSSortButton *)sortButton
+{
+    [JSSNotificationCenter postNotificationName:JSSSortButtonDidClick object:nil userInfo:@{JSSClickSortButton : sortButton.sort}];
 }
 
 @end

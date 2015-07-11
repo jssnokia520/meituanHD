@@ -80,6 +80,14 @@
     if (tableView == self.mainTableView) {
         self.selectedIndex = indexPath.row;
         [self.subTableView reloadData];
+        
+        if ([self.delegate respondsToSelector:@selector(mainTableDidSelectedAtIndex:)]) {
+            [self.delegate mainTableDidSelectedAtIndex:self.selectedIndex];
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(subTableDidSelectedAtIndex:mainIndex:)]) {
+            [self.delegate subTableDidSelectedAtIndex:indexPath.row mainIndex:self.selectedIndex];
+        }
     }
 }
 

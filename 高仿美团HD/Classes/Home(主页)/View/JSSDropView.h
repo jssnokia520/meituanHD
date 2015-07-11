@@ -40,10 +40,25 @@
 
 @end
 
+@protocol JSSDropViewDelegate <NSObject>
+
+/**
+ *  点击主表后执行的代理方法
+ */
+- (void)mainTableDidSelectedAtIndex:(NSInteger)mainIndex;
+
+/**
+ *  点击从表后执行的代理方法
+ */
+- (void)subTableDidSelectedAtIndex:(NSInteger)subIndex mainIndex:(NSInteger)mainIndex;
+
+@end
+
 @interface JSSDropView : UIView
 
 + (instancetype)dropView;
 
 @property (nonatomic, weak) id<JSSDropViewDataSource> dataSource;
+@property (nonatomic, weak) id<JSSDropViewDelegate> delegate;
 
 @end

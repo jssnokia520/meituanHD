@@ -13,4 +13,15 @@
 NSString * const JSSCityDidSelected = @"JSSCityDidSelected";
 NSString * const JSSSelectedCity = @"JSSSelectedCity";
 
+NSString * const JSSCategoryDidSelected = @"JSSCategoryDidSelected";
+NSString * const JSSSelectedCategory = @"JSSSelectedCategory";
+NSString * const JSSSelectedSubCategoryName = @"JSSSelectedSubCategoryName";
+
+NSString * const JSSRegionDidSelected = @"JSSRegionDidSelected";
+NSString * const JSSSelectedRegion = @"JSSSelectedRegion";
+NSString * const JSSSelectedSubRegionName = @"JSSSelectedSubRegionName";
+
+NSString * const JSSSortButtonDidClick = @"JSSSortButtonDidClick";
+NSString * const JSSClickSortButton = @"JSSClickSortButton";
+
 @end

@@ -12,8 +12,9 @@
 #import "JSSDropView.h"
 #import "UIView+Extension.h"
 #import "JSSMetaTool.h"
+#import "JSSConst.h"
 
-@interface JSSCategoryController () <JSSDropViewDataSource>
+@interface JSSCategoryController () <JSSDropViewDataSource, JSSDropViewDelegate>
 
 @end
 
@@ -25,6 +26,7 @@
     
     JSSDropView *dropView = [JSSDropView dropView];
     [dropView setDataSource:self];
+    [dropView setDelegate:self];
     self.preferredContentSize = dropView.size;
     self.view = dropView;
 }
@@ -56,6 +58,21 @@
 {
     JSSCategory *category = [JSSMetaTool categories][index];
     return category.small_highlighted_icon;
+}
+
+- (void)mainTableDidSelectedAtIndex:(NSInteger)mainIndex
+{
+    JSSCategory *category = [JSSMetaTool categories][mainIndex];
+    if (category.subcategories == 0) {
+        [JSSNotificationCenter postNotificationName:JSSCategoryDidSelected object:nil userInfo:@{JSSSelectedCategory : category}];
+    }
+}
+
+- (void)subTableDidSelectedAtIndex:(NSInteger)subIndex mainIndex:(NSInteger)mainIndex
+{
+    JSSCategory *category = [JSSMetaTool categories][mainIndex];
+    NSArray *subcategories = category.subcategories;
+    [JSSNotificationCenter postNotificationName:JSSCategoryDidSelected object:nil userInfo:@{JSSSelectedCategory : category, JSSSelectedSubCategoryName : subcategories[subIndex]}];
 }
 
 @end

@@ -18,4 +18,15 @@
 extern NSString * const JSSCityDidSelected;
 extern NSString * const JSSSelectedCity;
 
+extern NSString * const JSSCategoryDidSelected;
+extern NSString * const JSSSelectedCategory;
+extern NSString * const JSSSelectedSubCategoryName;
+
+extern NSString * const JSSRegionDidSelected;
+extern NSString * const JSSSelectedRegion;
+extern NSString * const JSSSelectedSubRegionName;
+
+extern NSString * const JSSSortButtonDidClick;
+extern NSString * const JSSClickSortButton;
+
 @end

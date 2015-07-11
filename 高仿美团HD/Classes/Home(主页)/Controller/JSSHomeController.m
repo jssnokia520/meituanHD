@@ -16,6 +16,9 @@
 #import "JSSMetaTool.h"
 #import "JSSCity.h"
 #import "JSSSortController.h"
+#import "JSSCategory.h"
+#import "JSSRegion.h"
+#import "JSSSort.h"
 
 @interface JSSHomeController ()
 
@@ -65,14 +68,62 @@
      */
     [self setupRightView];
     
+    // 接收城市通知
     [JSSNotificationCenter addObserver:self selector:@selector(cityDidSelected:) name:JSSCityDidSelected object:nil];
+    // 接收分类通知
+    [JSSNotificationCenter addObserver:self selector:@selector(categoryDidSelected:) name:JSSCategoryDidSelected object:nil];
+    // 接收区域的通知
+    [JSSNotificationCenter addObserver:self selector:@selector(regionDidSelected:) name:JSSRegionDidSelected object:nil];
+    // 接收排序的通知
+    [JSSNotificationCenter addObserver:self selector:@selector(sortDidSelected:) name:JSSSortButtonDidClick object:nil];
 }
 
+/**
+ *  接收排序的通知
+ */
+- (void)sortDidSelected:(NSNotification *)notification
+{
+    JSSSort *sort = notification.userInfo[JSSClickSortButton];
+    JSSTopView *sortTopView = (JSSTopView *)self.sortItem.customView;
+    [sortTopView setTitle:sort.label];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+/**
+ *  接收区域的通知
+ */
+- (void)regionDidSelected:(NSNotification *)notification
+{
+    JSSRegion *region = notification.userInfo[JSSSelectedRegion];
+    NSString *subRegionName = notification.userInfo[JSSSelectedSubRegionName];
+    JSSTopView *regionTopView = (JSSTopView *)self.districtItem.customView;
+    [regionTopView setTitle:[NSString stringWithFormat:@"%@ - %@", self.selectedCityName, region.name]];
+    [regionTopView setSubTitle:subRegionName];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+/**
+ *  接收分类通知
+ */
+- (void)categoryDidSelected:(NSNotification *)notification
+{
+    JSSCategory *category = notification.userInfo[JSSSelectedCategory];
+    NSString *subCategoryName = notification.userInfo[JSSSelectedSubCategoryName];
+    JSSTopView *categoryDropView = (JSSTopView *)self.categoryItem.customView;
+    [categoryDropView setTitle:category.name];
+    [categoryDropView setSubTitle:subCategoryName];
+    [categoryDropView setIocn:category.icon highIcon:category.highlighted_icon];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+/**
+ *  接收城市通知
+ */
 - (void)cityDidSelected:(NSNotification *)notification
 {
     self.selectedCityName = notification.userInfo[JSSSelectedCity];
     JSSTopView *districtTopView = (JSSTopView *)self.districtItem.customView;
-    [districtTopView setTitle:[NSString stringWithFormat:@"%@-全部", self.selectedCityName]];
+    [districtTopView setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
 }
 
 - (void)dealloc
@@ -118,6 +169,8 @@
     JSSCategoryController *categoryVc = [[JSSCategoryController alloc] init];
     UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:categoryVc];
     [popover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    
 }
 
 /**

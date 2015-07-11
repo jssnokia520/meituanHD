@@ -13,8 +13,9 @@
 #import "JSSNavigationController.h"
 #import "JSSMetaTool.h"
 #import "JSSRegion.h"
+#import "JSSConst.h"
 
-@interface JSSDistrictController () <JSSDropViewDataSource>
+@interface JSSDistrictController () <JSSDropViewDataSource, JSSDropViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 
@@ -27,16 +28,20 @@
 
     JSSDropView *dropView = [JSSDropView dropView];
     [dropView setDataSource:self];
+    [dropView setDelegate:self];
     [dropView setY:self.bgView.height];
     [self.view addSubview:dropView];
     [self setPreferredContentSize:CGSizeMake(dropView.width, dropView.height + self.bgView.height)];
 }
 
 - (IBAction)changeCity:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
     JSSCityController *cityVc = [[JSSCityController alloc] init];
     JSSNavigationController *nav = [[JSSNavigationController alloc] initWithRootViewController:cityVc];
     [nav setModalPresentationStyle:UIModalPresentationFormSheet];
-    [self presentViewController:nav animated:YES completion:nil];
+    UIViewController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [rootVc presentViewController:nav animated:YES completion:nil];
 }
 
 - (NSInteger)numberOfRowsInMainTabel
@@ -54,6 +59,21 @@
 {
     JSSRegion *region = self.regions[index];
     return region.subregions;
+}
+
+- (void)mainTableDidSelectedAtIndex:(NSInteger)mainIndex
+{
+    JSSRegion *region = self.regions[mainIndex];
+    if (region.subregions.count == 0) {
+        [JSSNotificationCenter postNotificationName:JSSRegionDidSelected object:nil userInfo:@{JSSSelectedRegion : region}];
+    }
+}
+
+- (void)subTableDidSelectedAtIndex:(NSInteger)subIndex mainIndex:(NSInteger)mainIndex
+{
+    JSSRegion *region = self.regions[mainIndex];
+    NSArray *subRegions = region.subregions;
+    [JSSNotificationCenter postNotificationName:JSSRegionDidSelected object:nil userInfo:@{JSSSelectedRegion : region, JSSSelectedSubRegionName : subRegions[subIndex]}];
 }
 
 @end
