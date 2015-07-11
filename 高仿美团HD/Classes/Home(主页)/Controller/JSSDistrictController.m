@@ -11,8 +11,10 @@
 #import "UIView+Extension.h"
 #import "JSSCityController.h"
 #import "JSSNavigationController.h"
+#import "JSSMetaTool.h"
+#import "JSSRegion.h"
 
-@interface JSSDistrictController ()
+@interface JSSDistrictController () <JSSDropViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 
@@ -24,15 +26,44 @@
     [super viewDidLoad];
 
     JSSDropView *dropView = [JSSDropView dropView];
+    [dropView setDataSource:self];
     [dropView setY:self.bgView.height];
     [self.view addSubview:dropView];
     [self setPreferredContentSize:CGSizeMake(dropView.width, dropView.height + self.bgView.height)];
 }
+
 - (IBAction)changeCity:(UIButton *)sender {
     JSSCityController *cityVc = [[JSSCityController alloc] init];
     JSSNavigationController *nav = [[JSSNavigationController alloc] initWithRootViewController:cityVc];
     [nav setModalPresentationStyle:UIModalPresentationFormSheet];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (NSInteger)numberOfRowsInMainTabel
+{
+    return self.regions.count;
+}
+
+- (NSString *)titleForMainTableAtIndex:(NSInteger)index
+{
+    JSSRegion *region = self.regions[index];
+    return region.name;
+}
+
+- (NSArray *)subArrayForMainTableAtIndex:(NSInteger)index
+{
+    JSSRegion *region = self.regions[index];
+    return region.subregions;
+}
+
+- (NSString *)iconForMainTableAtIndex:(NSInteger)index
+{
+    return nil;
+}
+
+- (NSString *)highIconForMainTableAtIndex:(NSInteger)index
+{
+    return nil;
 }
 
 @end

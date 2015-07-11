@@ -10,4 +10,9 @@
 
 @interface JSSDistrictController : UIViewController
 
+/**
+ *  区域数组
+ */
+@property (nonatomic, strong) NSArray *regions;
+
 @end

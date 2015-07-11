@@ -13,6 +13,8 @@
 #import "JSSTopView.h"
 #import "JSSCategoryController.h"
 #import "JSSDistrictController.h"
+#import "JSSMetaTool.h"
+#import "JSSCity.h"
 
 @interface JSSHomeController ()
 
@@ -31,11 +33,14 @@
  */
 @property (nonatomic, weak) UIBarButtonItem *sortItem;
 
+/**
+ *  选中的城市名称
+ */
+@property (nonatomic, copy) NSString *selectedCityName;
+
 @end
 
 @implementation JSSHomeController
-
-static NSString * const reuseIdentifier = @"Cell";
 
 - (instancetype)init
 {
@@ -48,7 +53,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     [self.collectionView setBackgroundColor:JSSColor(230, 230, 230)];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     /**
      *  添加导航栏左边的子控件
@@ -65,9 +69,9 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)cityDidSelected:(NSNotification *)notification
 {
-    NSString *cityName = notification.userInfo[JSSSelectedCity];
+    self.selectedCityName = notification.userInfo[JSSSelectedCity];
     JSSTopView *districtTopView = (JSSTopView *)self.districtItem.customView;
-    [districtTopView setTitle:[NSString stringWithFormat:@"%@-全部", cityName]];
+    [districtTopView setTitle:[NSString stringWithFormat:@"%@-全部", self.selectedCityName]];
 }
 
 - (void)dealloc
@@ -121,6 +125,10 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)districtViewDidClick
 {
     JSSDistrictController *districtVc = [[JSSDistrictController alloc] init];
+    if (self.selectedCityName) {
+        JSSCity *city = [[[JSSMetaTool cities] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", self.selectedCityName]] firstObject];
+        [districtVc setRegions:city.regions];
+    }
     UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:districtVc];
     [popover presentPopoverFromBarButtonItem:self.districtItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
@@ -144,20 +152,6 @@ static NSString * const reuseIdentifier = @"Cell";
     UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_search" highlightedImage:@"icon_search_highlighted"];
     [searchItem.customView setWidth:60];
     [self.navigationItem setRightBarButtonItems:@[mapItem, searchItem]];
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 0;
-}
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    return cell;
 }
 
 @end

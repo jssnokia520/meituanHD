@@ -11,8 +11,9 @@
 #import "MJExtension.h"
 #import "JSSDropView.h"
 #import "UIView+Extension.h"
+#import "JSSMetaTool.h"
 
-@interface JSSCategoryController ()
+@interface JSSCategoryController () <JSSDropViewDataSource>
 
 @end
 
@@ -22,11 +23,39 @@
 {
     [super loadView];
     
-    NSArray *categories = [JSSCategory objectArrayWithFilename:@"categories.plist"];
     JSSDropView *dropView = [JSSDropView dropView];
-    dropView.categories = categories;
+    [dropView setDataSource:self];
     self.preferredContentSize = dropView.size;
     self.view = dropView;
+}
+
+- (NSInteger)numberOfRowsInMainTabel
+{
+    return [JSSMetaTool categories].count;
+}
+
+- (NSString *)titleForMainTableAtIndex:(NSInteger)index
+{
+    JSSCategory *category = [JSSMetaTool categories][index];
+    return category.name;
+}
+
+- (NSArray *)subArrayForMainTableAtIndex:(NSInteger)index
+{
+    JSSCategory *category = [JSSMetaTool categories][index];
+    return category.subcategories;
+}
+
+- (NSString *)iconForMainTableAtIndex:(NSInteger)index
+{
+    JSSCategory *category = [JSSMetaTool categories][index];
+    return category.small_icon;
+}
+
+- (NSString *)highIconForMainTableAtIndex:(NSInteger)index
+{
+    JSSCategory *category = [JSSMetaTool categories][index];
+    return category.small_highlighted_icon;
 }
 
 @end

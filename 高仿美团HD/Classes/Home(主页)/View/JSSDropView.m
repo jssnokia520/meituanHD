@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property (weak, nonatomic) IBOutlet UITableView *subTableView;
 
-@property (nonatomic, strong) JSSCategory *selectedCategory;
+@property (nonatomic, assign) NSInteger selectedIndex;
 
 @end
 
@@ -35,10 +35,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.mainTableView) {
-        return self.categories.count;
+        return [self.dataSource numberOfRowsInMainTabel];
     } else {
-        NSArray *subcategories = self.selectedCategory.subcategories;
-        return subcategories.count;
+        NSArray *subArray = [self.dataSource subArrayForMainTableAtIndex:self.selectedIndex];
+        return subArray.count;
     }
 }
 
@@ -49,11 +49,12 @@
     if (tableView == self.mainTableView) {
         cell = [JSSMainCell cellWithTableView:tableView];
         
-        JSSCategory *category = self.categories[indexPath.row];
-        [cell.textLabel setText:category.name];
-        [cell.imageView setImage:[UIImage imageNamed:category.small_icon]];
+        [cell.textLabel setText:[self.dataSource titleForMainTableAtIndex:indexPath.row]];
+        [cell.imageView setImage:[UIImage imageNamed:[self.dataSource iconForMainTableAtIndex:indexPath.row]]];
+        [cell.imageView setHighlightedImage:[UIImage imageNamed:[self.dataSource highIconForMainTableAtIndex:indexPath.row]]];
         
-        if (category.subcategories.count) {
+        NSArray *subArray = [self.dataSource subArrayForMainTableAtIndex:indexPath.row];
+        if (subArray.count) {
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         } else {
             [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -61,10 +62,8 @@
     } else {
         cell = [JSSSubCell cellWithTableView:tableView];
         
-        NSArray *subcategories = self.selectedCategory.subcategories;
-        [cell.textLabel setText:subcategories[indexPath.row]];
-        
-        
+        NSArray *subArray = [self.dataSource subArrayForMainTableAtIndex:self.selectedIndex];
+        [cell.textLabel setText:subArray[indexPath.row]];
     }
     
     return cell;
@@ -73,7 +72,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == self.mainTableView) {
-        self.selectedCategory = self.categories[indexPath.row];
+        self.selectedIndex = indexPath.row;
         [self.subTableView reloadData];
     }
 }

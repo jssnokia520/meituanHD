@@ -48,6 +48,7 @@
 		7FFA0BEC1B50C18D00DEA357 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BEB1B50C18D00DEA357 /* UIView+AutoLayout.m */; };
 		7FFA0BEF1B50EF1900DEA357 /* JSSCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BEE1B50EF1900DEA357 /* JSSCity.m */; };
 		7FFA0BF21B50EFE600DEA357 /* JSSRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BF11B50EFE600DEA357 /* JSSRegion.m */; };
+		7FFA0BF61B51118100DEA357 /* JSSMetaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BF51B51118100DEA357 /* JSSMetaTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,8 @@
 		7FFA0BEE1B50EF1900DEA357 /* JSSCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSCity.m; sourceTree = "<group>"; };
 		7FFA0BF01B50EFE600DEA357 /* JSSRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSRegion.h; sourceTree = "<group>"; };
 		7FFA0BF11B50EFE600DEA357 /* JSSRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSRegion.m; sourceTree = "<group>"; };
+		7FFA0BF41B51118100DEA357 /* JSSMetaTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSMetaTool.h; sourceTree = "<group>"; };
+		7FFA0BF51B51118100DEA357 /* JSSMetaTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSMetaTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,7 @@
 		7F450C681B4F7D6100A1CBB6 /* Home(主页) */ = {
 			isa = PBXGroup;
 			children = (
+				7FFA0BF31B51116000DEA357 /* Tool */,
 				7F450C8D1B4FADFF00A1CBB6 /* Model */,
 				7F450C691B4F7D6100A1CBB6 /* Controller */,
 				7F450C6C1B4F7D6100A1CBB6 /* View */,
@@ -375,6 +379,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7FFA0BF31B51116000DEA357 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				7FFA0BF41B51118100DEA357 /* JSSMetaTool.h */,
+				7FFA0BF51B51118100DEA357 /* JSSMetaTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -511,6 +524,7 @@
 				7F450CBD1B4FB29600A1CBB6 /* NSObject+MJCoding.m in Sources */,
 				7F450CBA1B4FB29600A1CBB6 /* MJMethod.m in Sources */,
 				7F450CD11B4FFDB200A1CBB6 /* JSSCityController.m in Sources */,
+				7FFA0BF61B51118100DEA357 /* JSSMetaTool.m in Sources */,
 				7F450CB91B4FB29600A1CBB6 /* MJMember.m in Sources */,
 				7F450C801B4F7D6100A1CBB6 /* JSSTopView.m in Sources */,
 			);
