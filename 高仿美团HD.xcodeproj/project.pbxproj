@@ -43,6 +43,9 @@
 		7F450CD11B4FFDB200A1CBB6 /* JSSCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CCF1B4FFDB200A1CBB6 /* JSSCityController.m */; };
 		7F450CD21B4FFDB200A1CBB6 /* JSSCityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F450CD01B4FFDB200A1CBB6 /* JSSCityController.xib */; };
 		7F450CD51B5001ED00A1CBB6 /* JSSCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450CD41B5001ED00A1CBB6 /* JSSCityGroup.m */; };
+		7F5377561B516C9C00C2659D /* DPAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5377521B516C9C00C2659D /* DPAPI.m */; };
+		7F5377571B516C9C00C2659D /* DPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5377551B516C9C00C2659D /* DPRequest.m */; };
+		7F5377591B516E0600C2659D /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5377581B516E0600C2659D /* Foundation+Log.m */; };
 		7FE06D451B4F55BE006403F3 /* ____HDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D441B4F55BE006403F3 /* ____HDTests.m */; };
 		7FFA0BE91B50C0DB00DEA357 /* JSSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BE81B50C0DB00DEA357 /* JSSSearchController.m */; };
 		7FFA0BEC1B50C18D00DEA357 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BEB1B50C18D00DEA357 /* UIView+AutoLayout.m */; };
@@ -127,6 +130,12 @@
 		7F450CD01B4FFDB200A1CBB6 /* JSSCityController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSSCityController.xib; sourceTree = "<group>"; };
 		7F450CD31B5001ED00A1CBB6 /* JSSCityGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSCityGroup.h; sourceTree = "<group>"; };
 		7F450CD41B5001ED00A1CBB6 /* JSSCityGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSCityGroup.m; sourceTree = "<group>"; };
+		7F5377511B516C9C00C2659D /* DPAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAPI.h; sourceTree = "<group>"; };
+		7F5377521B516C9C00C2659D /* DPAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAPI.m; sourceTree = "<group>"; };
+		7F5377531B516C9C00C2659D /* DPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPConstants.h; sourceTree = "<group>"; };
+		7F5377541B516C9C00C2659D /* DPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRequest.h; sourceTree = "<group>"; };
+		7F5377551B516C9C00C2659D /* DPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRequest.m; sourceTree = "<group>"; };
+		7F5377581B516E0600C2659D /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		7FE06D251B4F55BE006403F3 /* 高仿美团HD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "高仿美团HD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE06D291B4F55BE006403F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FE06D3E1B4F55BE006403F3 /* 高仿美团HDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "高仿美团HDTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +247,7 @@
 		7F450C711B4F7D6100A1CBB6 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7F5377581B516E0600C2659D /* Foundation+Log.m */,
 				7FFA0BEA1B50C17E00DEA357 /* UIView+AutoLayout.h */,
 				7FFA0BEB1B50C18D00DEA357 /* UIView+AutoLayout.m */,
 				7F450C721B4F7D6100A1CBB6 /* UIBarButtonItem+Extension.h */,
@@ -300,6 +310,7 @@
 		7F450C9C1B4FB27C00A1CBB6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				7F5377501B516C9C00C2659D /* dianpingapi */,
 				7F450C9D1B4FB29600A1CBB6 /* MJExtension */,
 			);
 			path = Lib;
@@ -333,6 +344,18 @@
 				7F450CB41B4FB29600A1CBB6 /* NSObject+MJMember.m */,
 			);
 			path = MJExtension;
+			sourceTree = "<group>";
+		};
+		7F5377501B516C9C00C2659D /* dianpingapi */ = {
+			isa = PBXGroup;
+			children = (
+				7F5377511B516C9C00C2659D /* DPAPI.h */,
+				7F5377521B516C9C00C2659D /* DPAPI.m */,
+				7F5377531B516C9C00C2659D /* DPConstants.h */,
+				7F5377541B516C9C00C2659D /* DPRequest.h */,
+				7F5377551B516C9C00C2659D /* DPRequest.m */,
+			);
+			path = dianpingapi;
 			sourceTree = "<group>";
 		};
 		7FE06D1C1B4F55BE006403F3 = {
@@ -525,6 +548,7 @@
 				7F450CB71B4FB29600A1CBB6 /* MJFoundation.m in Sources */,
 				7F450C821B4F7D6100A1CBB6 /* UIBarButtonItem+Extension.m in Sources */,
 				7F450C7F1B4F7D6100A1CBB6 /* JSSHomeController.m in Sources */,
+				7F5377561B516C9C00C2659D /* DPAPI.m in Sources */,
 				7F450CBF1B4FB29600A1CBB6 /* NSObject+MJMember.m in Sources */,
 				7F450C8A1B4F7DA200A1CBB6 /* JSSDropView.m in Sources */,
 				7F450CBB1B4FB29600A1CBB6 /* MJType.m in Sources */,
@@ -535,6 +559,8 @@
 				7FFA0BF21B50EFE600DEA357 /* JSSRegion.m in Sources */,
 				7F450CBD1B4FB29600A1CBB6 /* NSObject+MJCoding.m in Sources */,
 				7F450CBA1B4FB29600A1CBB6 /* MJMethod.m in Sources */,
+				7F5377591B516E0600C2659D /* Foundation+Log.m in Sources */,
+				7F5377571B516C9C00C2659D /* DPRequest.m in Sources */,
 				7F450CD11B4FFDB200A1CBB6 /* JSSCityController.m in Sources */,
 				7FFA0BF61B51118100DEA357 /* JSSMetaTool.m in Sources */,
 				7F450CB91B4FB29600A1CBB6 /* MJMember.m in Sources */,

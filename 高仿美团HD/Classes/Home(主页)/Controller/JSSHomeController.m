@@ -19,8 +19,9 @@
 #import "JSSCategory.h"
 #import "JSSRegion.h"
 #import "JSSSort.h"
+#import "DPAPI.h"
 
-@interface JSSHomeController ()
+@interface JSSHomeController () <DPRequestDelegate>
 
 /**
  *  分类item
@@ -41,6 +42,21 @@
  *  选中的城市名称
  */
 @property (nonatomic, copy) NSString *selectedCityName;
+
+/**
+ *  选中的城市名称
+ */
+@property (nonatomic, copy) NSString *selectedCategoryName;
+
+/**
+ *  选中的城市名称
+ */
+@property (nonatomic, copy) NSString *selectedRegionName;
+
+/**
+ *  选中的城市名称
+ */
+@property (nonatomic, strong) JSSSort *selectedSort;
 
 @end
 
@@ -83,10 +99,12 @@
  */
 - (void)sortDidSelected:(NSNotification *)notification
 {
-    JSSSort *sort = notification.userInfo[JSSClickSortButton];
+    self.selectedSort = notification.userInfo[JSSClickSortButton];
     JSSTopView *sortTopView = (JSSTopView *)self.sortItem.customView;
-    [sortTopView setTitle:sort.label];
+    [sortTopView setTitle:self.selectedSort.label];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self loadNewDeals];
 }
 
 /**
@@ -96,10 +114,21 @@
 {
     JSSRegion *region = notification.userInfo[JSSSelectedRegion];
     NSString *subRegionName = notification.userInfo[JSSSelectedSubRegionName];
+    
+    if ([region.name isEqualToString:@"全部"]) {
+        self.selectedRegionName = nil;
+    } else if (!subRegionName || [subRegionName isEqualToString:@"全部"]) {
+        self.selectedRegionName = region.name;
+    } else {
+        self.selectedRegionName = subRegionName;
+    }
+    
     JSSTopView *regionTopView = (JSSTopView *)self.districtItem.customView;
     [regionTopView setTitle:[NSString stringWithFormat:@"%@ - %@", self.selectedCityName, region.name]];
     [regionTopView setSubTitle:subRegionName];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self loadNewDeals];
 }
 
 /**
@@ -109,11 +138,22 @@
 {
     JSSCategory *category = notification.userInfo[JSSSelectedCategory];
     NSString *subCategoryName = notification.userInfo[JSSSelectedSubCategoryName];
+    
+    if ([category.name isEqualToString:@"全部分类"]) {
+        self.selectedCategoryName = nil;
+    } else if (!subCategoryName || [subCategoryName isEqualToString:@"全部"]) {
+        self.selectedCategoryName = category.name;
+    } else {
+        self.selectedCategoryName = subCategoryName;
+    }
+    
     JSSTopView *categoryDropView = (JSSTopView *)self.categoryItem.customView;
     [categoryDropView setTitle:category.name];
     [categoryDropView setSubTitle:subCategoryName];
     [categoryDropView setIocn:category.icon highIcon:category.highlighted_icon];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self loadNewDeals];
 }
 
 /**
@@ -124,6 +164,44 @@
     self.selectedCityName = notification.userInfo[JSSSelectedCity];
     JSSTopView *districtTopView = (JSSTopView *)self.districtItem.customView;
     [districtTopView setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
+    
+    [self loadNewDeals];
+}
+
+/**
+ *  进行网络请求
+ */
+- (void)loadNewDeals
+{
+    DPAPI *api = [[DPAPI alloc] init];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"city"] = self.selectedCityName;
+    params[@"limit"] = @(10);
+    
+    if (self.selectedCategoryName) {
+        params[@"category"] = self.selectedCategoryName;
+    }
+    
+    if (self.selectedRegionName) {
+        params[@"region"] = self.selectedRegionName;
+    }
+    
+    if (self.selectedSort) {
+        params[@"sort"] = @(self.selectedSort.value);
+    }
+    
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+}
+
+- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
+{
+    NSLog(@"请求成功--%@", result);
+}
+
+- (void)request:(DPRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"请求失败--%@", error);
 }
 
 - (void)dealloc
@@ -154,6 +232,7 @@
     
     // 4.排序
     JSSTopView *sortView = [JSSTopView topView];
+    [sortView setIocn:@"icon_sort" highIcon:@"icon_sort_highlighted"];
     [sortView dealWithTarget:self andAction:@selector(sortViewDidClick)];
     UIBarButtonItem *sortItem = [[UIBarButtonItem alloc] initWithCustomView:sortView];
     self.sortItem = sortItem;
@@ -169,8 +248,6 @@
     JSSCategoryController *categoryVc = [[JSSCategoryController alloc] init];
     UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:categoryVc];
     [popover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    
-    
 }
 
 /**
