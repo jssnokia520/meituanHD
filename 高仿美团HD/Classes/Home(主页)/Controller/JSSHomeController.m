@@ -20,6 +20,11 @@
 #import "JSSRegion.h"
 #import "JSSSort.h"
 #import "DPAPI.h"
+#import "JSSDeal.h"
+#import "MJExtension.h"
+#import "JSSDealCell.h"
+
+static NSString *const reuseIdentifier = @"deal";
 
 @interface JSSHomeController () <DPRequestDelegate>
 
@@ -58,15 +63,28 @@
  */
 @property (nonatomic, strong) JSSSort *selectedSort;
 
+/**
+ *  请求返回的数据
+ */
+@property (nonatomic, strong) NSMutableArray *deals;
+
 @end
 
 @implementation JSSHomeController
 
+- (NSMutableArray *)deals
+{
+    if (_deals == nil) {
+        _deals = [NSMutableArray array];
+    }
+    return _deals;
+}
+
 - (instancetype)init
 {
-    UICollectionViewLayout *layout = [[UICollectionViewLayout alloc] init];
-    self = [super initWithCollectionViewLayout:layout];
-    return self;
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    [layout setItemSize:CGSizeMake(305, 305)];
+    return [self initWithCollectionViewLayout:layout];
 }
 
 - (void)viewDidLoad {
@@ -92,6 +110,8 @@
     [JSSNotificationCenter addObserver:self selector:@selector(regionDidSelected:) name:JSSRegionDidSelected object:nil];
     // 接收排序的通知
     [JSSNotificationCenter addObserver:self selector:@selector(sortDidSelected:) name:JSSSortButtonDidClick object:nil];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"JSSDealCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
 }
 
 /**
@@ -196,12 +216,16 @@
 
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
 {
-    NSLog(@"请求成功--%@", result);
+    NSArray *deals = [JSSDeal objectArrayWithKeyValuesArray:result[@"deals"]];
+    [self.deals addObjectsFromArray:deals];
+    
+    // 刷新数据
+    [self.collectionView reloadData];
 }
 
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
 {
-    NSLog(@"请求失败--%@", error);
+    NSLog(@"请求失败-%@", error);
 }
 
 - (void)dealloc
@@ -285,6 +309,23 @@
     UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_search" highlightedImage:@"icon_search_highlighted"];
     [searchItem.customView setWidth:60];
     [self.navigationItem setRightBarButtonItems:@[mapItem, searchItem]];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.deals.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    JSSDealCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.deal = self.deals[indexPath.item];
+    return cell;
 }
 
 @end
