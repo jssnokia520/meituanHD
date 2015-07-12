@@ -35,6 +35,20 @@
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:deal.image_url] placeholderImage:[UIImage imageNamed:@"placeholder_deal"]];
     [self.titleLabel setText:deal.title];
     [self.descriptionLabel setText:deal.desc];
+    [self.currentPriceLabel setText:[self exchangePrice:deal.current_price]];
+    [self.listPriceLabel setText:[self exchangePrice:deal.list_price]];
+    [self.purchaseCountLabel setText:[NSString stringWithFormat:@"已售%ld", deal.purchase_count]];
+}
+
+- (NSString *)exchangePrice:(NSNumber *)number
+{
+    NSRange range = [number.stringValue rangeOfString:@"."];
+    if (range.location != NSNotFound) {
+        NSString *price = [number.stringValue substringWithRange:NSMakeRange(0, range.location + 2)];
+        return [NSString stringWithFormat:@"￥%@", price];
+    }
+    
+    return [NSString stringWithFormat:@"￥%@", number.stringValue];
 }
 
 @end

@@ -26,6 +26,7 @@
 		7F3FAD831B5215D60069C9B7 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FAD711B5215D60069C9B7 /* UIImageView+HighlightedWebCache.m */; };
 		7F3FAD841B5215D60069C9B7 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FAD731B5215D60069C9B7 /* UIImageView+WebCache.m */; };
 		7F3FAD851B5215D60069C9B7 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FAD751B5215D60069C9B7 /* UIView+WebCacheOperation.m */; };
+		7F3FAD8B1B523C8A0069C9B7 /* JSSListPriceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FAD8A1B523C8A0069C9B7 /* JSSListPriceLabel.m */; };
 		7F450C7F1B4F7D6100A1CBB6 /* JSSHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C6B1B4F7D6100A1CBB6 /* JSSHomeController.m */; };
 		7F450C801B4F7D6100A1CBB6 /* JSSTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F450C6E1B4F7D6100A1CBB6 /* JSSTopView.m */; };
 		7F450C811B4F7D6100A1CBB6 /* JSSTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F450C6F1B4F7D6100A1CBB6 /* JSSTopView.xib */; };
@@ -124,6 +125,8 @@
 		7F3FAD731B5215D60069C9B7 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		7F3FAD741B5215D60069C9B7 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		7F3FAD751B5215D60069C9B7 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		7F3FAD891B523C8A0069C9B7 /* JSSListPriceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSListPriceLabel.h; sourceTree = "<group>"; };
+		7F3FAD8A1B523C8A0069C9B7 /* JSSListPriceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSListPriceLabel.m; sourceTree = "<group>"; };
 		7F450C6A1B4F7D6100A1CBB6 /* JSSHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSHomeController.h; sourceTree = "<group>"; };
 		7F450C6B1B4F7D6100A1CBB6 /* JSSHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSHomeController.m; sourceTree = "<group>"; };
 		7F450C6D1B4F7D6100A1CBB6 /* JSSTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSTopView.h; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 				7F3FAD4F1B520F930069C9B7 /* JSSDealCell.h */,
 				7F3FAD501B520F930069C9B7 /* JSSDealCell.m */,
 				7F3FAD521B520FAB0069C9B7 /* JSSDealCell.xib */,
+				7F3FAD891B523C8A0069C9B7 /* JSSListPriceLabel.h */,
+				7F3FAD8A1B523C8A0069C9B7 /* JSSListPriceLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				7F3FAD801B5215D60069C9B7 /* UIImage+GIF.m in Sources */,
 				7F450CBD1B4FB29600A1CBB6 /* NSObject+MJCoding.m in Sources */,
 				7F450CBA1B4FB29600A1CBB6 /* MJMethod.m in Sources */,
+				7F3FAD8B1B523C8A0069C9B7 /* JSSListPriceLabel.m in Sources */,
 				7F5377591B516E0600C2659D /* Foundation+Log.m in Sources */,
 				7F3FAD761B5215D60069C9B7 /* MKAnnotationView+WebCache.m in Sources */,
 				7F5377571B516C9C00C2659D /* DPRequest.m in Sources */,

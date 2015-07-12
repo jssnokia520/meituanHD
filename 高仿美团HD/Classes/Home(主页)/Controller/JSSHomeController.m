@@ -217,6 +217,7 @@ static NSString *const reuseIdentifier = @"deal";
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
 {
     NSArray *deals = [JSSDeal objectArrayWithKeyValuesArray:result[@"deals"]];
+    [self.deals removeAllObjects];
     [self.deals addObjectsFromArray:deals];
     
     // 刷新数据

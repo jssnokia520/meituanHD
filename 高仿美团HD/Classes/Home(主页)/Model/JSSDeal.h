@@ -29,12 +29,12 @@
 /**
  *  团购包含商品原价值
  */
-@property (nonatomic, assign) CGFloat list_price;
+@property (nonatomic, strong) NSNumber *list_price;
 
 /**
  *  团购包含商品原价值
  */
-@property (nonatomic, assign) CGFloat current_price;
+@property (nonatomic, strong) NSNumber *current_price;
 
 /**
  *  团购当前已购买数
