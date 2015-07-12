@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSSDealsViewController.h"
 
-@interface JSSHomeController : UICollectionViewController
+@interface JSSHomeController : JSSDealsViewController
 
 @end

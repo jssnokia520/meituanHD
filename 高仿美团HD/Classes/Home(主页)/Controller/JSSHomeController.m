@@ -9,7 +9,6 @@
 #import "JSSHomeController.h"
 #import "JSSConst.h"
 #import "UIBarButtonItem+Extension.h"
-#import "UIView+Extension.h"
 #import "JSSTopView.h"
 #import "JSSCategoryController.h"
 #import "JSSDistrictController.h"
@@ -19,17 +18,12 @@
 #import "JSSCategory.h"
 #import "JSSRegion.h"
 #import "JSSSort.h"
-#import "DPAPI.h"
-#import "JSSDeal.h"
-#import "MJExtension.h"
-#import "JSSDealCell.h"
 #import "MJRefresh.h"
-#import "UIView+AutoLayout.h"
-#import "MBProgressHUD+MJ.h"
+#import "JSSSearchViewController.h"
+#import "JSSNavigationController.h"
+#import "UIView+Extension.h"
 
-static NSString *const reuseIdentifier = @"deal";
-
-@interface JSSHomeController () <DPRequestDelegate>
+@interface JSSHomeController ()
 
 // 分类item
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
@@ -45,69 +39,13 @@ static NSString *const reuseIdentifier = @"deal";
 @property (nonatomic, copy) NSString *selectedRegionName;
 // 选中的排序模型
 @property (nonatomic, strong) JSSSort *selectedSort;
-// 请求返回的数据
-@property (nonatomic, strong) NSMutableArray *deals;
-// 当前网络请求的页码
-@property (nonatomic, assign) NSInteger currentPage;
-// 最后一次网络请求
-@property (nonatomic, strong) DPRequest *lastRequest;
-// 没有符合条件的团购
-@property (nonatomic, weak) UIImageView *nowDataImageView;
-// 总数量
-@property (nonatomic, assign) NSInteger count;
 
 @end
 
 @implementation JSSHomeController
 
-- (NSMutableArray *)deals
-{
-    if (_deals == nil) {
-        _deals = [NSMutableArray array];
-    }
-    return _deals;
-}
-
-- (instancetype)init
-{
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    [layout setItemSize:CGSizeMake(305, 305)];
-    return [self initWithCollectionViewLayout:layout];
-}
-
-- (UIImageView *)nowDataImageView
-{
-    if (_nowDataImageView == nil) {
-        UIImageView *nowDataImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_deals_empty"]];
-        [self.view addSubview:nowDataImageView];
-        [nowDataImageView autoCenterInSuperview];
-        _nowDataImageView = nowDataImageView;
-    }
-    
-    return _nowDataImageView;
-}
-
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    NSInteger count = (size.width == 1024) ? 3 : 2;
-    
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
-    CGFloat inset = (size.width - layout.itemSize.width * count) / (count + 1);
-    // 注意:这里不能设置成collectionView
-    [layout setSectionInset:UIEdgeInsetsMake(inset, inset, inset, inset)];
-    [layout setMinimumLineSpacing:inset];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.collectionView setBackgroundColor:JSSColor(230, 230, 230)];
-    [self.collectionView setAlwaysBounceVertical:YES];
-    
-    // 上拉刷新
-    [self.collectionView addFooterWithTarget:self action:@selector(loadMoreDeals)];
-    // 下拉刷新
-    [self.collectionView addHeaderWithTarget:self action:@selector(loadNewDeals)];
     
     // 添加导航栏左边的子控件
     [self setupLeftView];
@@ -122,8 +60,14 @@ static NSString *const reuseIdentifier = @"deal";
     [JSSNotificationCenter addObserver:self selector:@selector(regionDidSelected:) name:JSSRegionDidSelected object:nil];
     // 接收排序的通知
     [JSSNotificationCenter addObserver:self selector:@selector(sortDidSelected:) name:JSSSortButtonDidClick object:nil];
-    
-    [self.collectionView registerNib:[UINib nibWithNibName:@"JSSDealCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+}
+
+/**
+ *  移除通知
+ */
+- (void)dealloc
+{
+    [JSSNotificationCenter removeObserver:self];
 }
 
 /**
@@ -136,9 +80,7 @@ static NSString *const reuseIdentifier = @"deal";
     [sortTopView setSubTitle:self.selectedSort.label];
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    [self loadNewDeals];
-    
-    // 刷新提示
+    // 刷新数据
     [self.collectionView headerBeginRefreshing];
 }
 
@@ -163,9 +105,7 @@ static NSString *const reuseIdentifier = @"deal";
     [regionTopView setSubTitle:subRegionName];
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    [self loadNewDeals];
-    
-    // 刷新提示
+    // 刷新数据
     [self.collectionView headerBeginRefreshing];
 }
 
@@ -191,9 +131,7 @@ static NSString *const reuseIdentifier = @"deal";
     [categoryDropView setIocn:category.icon highIcon:category.highlighted_icon];
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    [self loadNewDeals];
-    
-    // 刷新提示
+    // 刷新数据
     [self.collectionView headerBeginRefreshing];
 }
 
@@ -206,97 +144,8 @@ static NSString *const reuseIdentifier = @"deal";
     JSSTopView *districtTopView = (JSSTopView *)self.districtItem.customView;
     [districtTopView setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
     
-    [self loadNewDeals];
-    
-    // 刷新提示
-    [self.collectionView headerBeginRefreshing];
-}
-
-- (void)loadDeals
-{
-    DPAPI *api = [[DPAPI alloc] init];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"city"] = self.selectedCityName;
-    params[@"limit"] = @(12);
-    
-    if (self.selectedCategoryName) {
-        params[@"category"] = self.selectedCategoryName;
-    }
-    
-    if (self.selectedRegionName) {
-        params[@"region"] = self.selectedRegionName;
-    }
-    
-    if (self.selectedSort) {
-        params[@"sort"] = @(self.selectedSort.value);
-    }
-    
-    params[@"page"] = @(self.currentPage);
-    
-    self.lastRequest = [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
-}
-
-/**
- *  下拉加载更多数据
- */
-- (void)loadMoreDeals
-{
-    self.currentPage++;
-    
-    [self loadDeals];
-}
-
-/**
- *  进行网络请求
- */
-- (void)loadNewDeals
-{
-    self.currentPage = 1;
-    
-    [self loadDeals];
-}
-
-- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
-{
-    if (self.lastRequest != request) {
-        return;
-    }
-    
-    self.count = [result[@"total_count"] integerValue];
-    
-    NSArray *deals = [JSSDeal objectArrayWithKeyValuesArray:result[@"deals"]];
-    if (self.currentPage == 1) {
-        [self.deals removeAllObjects];
-    }
-    [self.deals addObjectsFromArray:deals];
-    
     // 刷新数据
-    [self.collectionView reloadData];
-    
-    // 结束刷新
-    [self.collectionView footerEndRefreshing];
-    [self.collectionView headerEndRefreshing];
-}
-
-- (void)request:(DPRequest *)request didFailWithError:(NSError *)error
-{
-    NSLog(@"请求失败-%@", error);
-    
-    [MBProgressHUD showError:@"网络繁忙,请稍后再试!" toView:self.view];
-    
-    if (self.currentPage > 1) {
-        self.currentPage--;
-    }
-    
-    // 结束刷新
-    [self.collectionView footerEndRefreshing];
-    [self.collectionView headerEndRefreshing];
-}
-
-- (void)dealloc
-{
-    [JSSNotificationCenter removeObserver:self];
+    [self.collectionView headerBeginRefreshing];
 }
 
 /**
@@ -373,32 +222,37 @@ static NSString *const reuseIdentifier = @"deal";
     UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highlightedImage:@"icon_map_highlighted"];
     [mapItem.customView setWidth:60];
     
-    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_search" highlightedImage:@"icon_search_highlighted"];
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:self action:@selector(searchClick) image:@"icon_search" highlightedImage:@"icon_search_highlighted"];
     [searchItem.customView setWidth:60];
     [self.navigationItem setRightBarButtonItems:@[mapItem, searchItem]];
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+/**
+ *  点击导航栏右边的搜索按钮
+ */
+- (void)searchClick
 {
-    [self viewWillTransitionToSize:CGSizeMake(self.collectionView.width, 0) withTransitionCoordinator:nil];
-   
-    [self.collectionView setFooterHidden:self.deals.count == self.count];
-    
-    [self.nowDataImageView setHidden:self.deals.count != 0];
-    
-    return 1;
+    JSSSearchViewController *searchVc = [[JSSSearchViewController alloc] init];
+    [searchVc setSelectedCity:self.selectedCityName];
+    JSSNavigationController *nav = [[JSSNavigationController alloc] initWithRootViewController:searchVc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (void)setParams:(NSMutableDictionary *)params
 {
-    return self.deals.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    JSSDealCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.deal = self.deals[indexPath.item];
-    return cell;
+    params[@"city"] = self.selectedCityName;
+    
+    if (self.selectedCategoryName) {
+        params[@"category"] = self.selectedCategoryName;
+    }
+    
+    if (self.selectedRegionName) {
+        params[@"region"] = self.selectedRegionName;
+    }
+    
+    if (self.selectedSort) {
+        params[@"sort"] = @(self.selectedSort.value);
+    }
 }
 
 @end
