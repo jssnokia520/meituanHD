@@ -38,6 +38,13 @@
     [self.currentPriceLabel setText:[self exchangePrice:deal.current_price]];
     [self.listPriceLabel setText:[self exchangePrice:deal.list_price]];
     [self.purchaseCountLabel setText:[NSString stringWithFormat:@"已售%ld", deal.purchase_count]];
+    
+    NSDate *nowDate = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *nowDateStr = [formatter stringFromDate:nowDate];
+    
+    [self.dealNewImageView setHidden:[deal.publish_date compare:nowDateStr] == NSOrderedAscending];
 }
 
 - (NSString *)exchangePrice:(NSNumber *)number

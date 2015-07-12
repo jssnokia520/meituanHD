@@ -51,4 +51,9 @@
  */
 @property (nonatomic, copy) NSString *s_image_url;
 
+/**
+ *  团购发布上线日期
+ */
+@property (nonatomic, copy) NSString *publish_date;
+
 @end

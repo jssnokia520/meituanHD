@@ -23,6 +23,7 @@
 #import "JSSDeal.h"
 #import "MJExtension.h"
 #import "JSSDealCell.h"
+#import "MJRefresh.h"
 
 static NSString *const reuseIdentifier = @"deal";
 
@@ -68,6 +69,16 @@ static NSString *const reuseIdentifier = @"deal";
  */
 @property (nonatomic, strong) NSMutableArray *deals;
 
+/**
+ *  当前网络请求的页码
+ */
+@property (nonatomic, assign) NSInteger currentPage;
+
+/**
+ *  最后一次网络请求
+ */
+@property (nonatomic, strong) DPRequest *lastRequest;
+
 @end
 
 @implementation JSSHomeController
@@ -87,10 +98,22 @@ static NSString *const reuseIdentifier = @"deal";
     return [self initWithCollectionViewLayout:layout];
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    NSInteger count = (size.width == 1024) ? 3 : 2;
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
+    CGFloat inset = (size.width - layout.itemSize.width * count) / (count + 1);
+    [self.collectionView setContentInset:UIEdgeInsetsMake(inset, inset, inset, inset)];
+    [layout setMinimumLineSpacing:inset];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.collectionView setBackgroundColor:JSSColor(230, 230, 230)];
+    [self.collectionView setAlwaysBounceVertical:YES];
+    [self.collectionView addFooterWithTarget:self action:@selector(loadMoreDeals)];
     
     /**
      *  添加导航栏左边的子控件
@@ -188,16 +211,13 @@ static NSString *const reuseIdentifier = @"deal";
     [self loadNewDeals];
 }
 
-/**
- *  进行网络请求
- */
-- (void)loadNewDeals
+- (void)loadDeals
 {
     DPAPI *api = [[DPAPI alloc] init];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"city"] = self.selectedCityName;
-    params[@"limit"] = @(10);
+    params[@"limit"] = @(12);
     
     if (self.selectedCategoryName) {
         params[@"category"] = self.selectedCategoryName;
@@ -211,17 +231,46 @@ static NSString *const reuseIdentifier = @"deal";
         params[@"sort"] = @(self.selectedSort.value);
     }
     
-    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    params[@"page"] = @(self.currentPage);
+    
+    self.lastRequest = [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+}
+
+/**
+ *  下拉加载更多数据
+ */
+- (void)loadMoreDeals
+{
+    self.currentPage++;
+    
+    [self loadDeals];
+}
+
+/**
+ *  进行网络请求
+ */
+- (void)loadNewDeals
+{
+    self.currentPage = 1;
+    
+    [self loadDeals];
 }
 
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
 {
+    if (self.lastRequest != request) {
+        return;
+    }
+    
     NSArray *deals = [JSSDeal objectArrayWithKeyValuesArray:result[@"deals"]];
-    [self.deals removeAllObjects];
+    if (self.currentPage == 1) {
+        [self.deals removeAllObjects];
+    }
     [self.deals addObjectsFromArray:deals];
     
     // 刷新数据
     [self.collectionView reloadData];
+    [self.collectionView footerEndRefreshing];
 }
 
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
@@ -314,6 +363,8 @@ static NSString *const reuseIdentifier = @"deal";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
+    [self viewWillTransitionToSize:CGSizeMake(self.collectionView.width, 0) withTransitionCoordinator:nil];
+    
     return 1;
 }
 
