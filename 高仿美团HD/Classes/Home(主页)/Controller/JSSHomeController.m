@@ -24,60 +24,37 @@
 #import "MJExtension.h"
 #import "JSSDealCell.h"
 #import "MJRefresh.h"
+#import "UIView+AutoLayout.h"
+#import "MBProgressHUD+MJ.h"
 
 static NSString *const reuseIdentifier = @"deal";
 
 @interface JSSHomeController () <DPRequestDelegate>
 
-/**
- *  分类item
- */
+// 分类item
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
-
-/**
- *  地区item
- */
+// 地区item
 @property (nonatomic, weak) UIBarButtonItem *districtItem;
-
-/**
- *  排序item
- */
+// 排序item
 @property (nonatomic, weak) UIBarButtonItem *sortItem;
-
-/**
- *  选中的城市名称
- */
+// 选中的城市名称
 @property (nonatomic, copy) NSString *selectedCityName;
-
-/**
- *  选中的城市名称
- */
+// 选中的分类名称
 @property (nonatomic, copy) NSString *selectedCategoryName;
-
-/**
- *  选中的城市名称
- */
+// 选中的区域称
 @property (nonatomic, copy) NSString *selectedRegionName;
-
-/**
- *  选中的城市名称
- */
+// 选中的排序模型
 @property (nonatomic, strong) JSSSort *selectedSort;
-
-/**
- *  请求返回的数据
- */
+// 请求返回的数据
 @property (nonatomic, strong) NSMutableArray *deals;
-
-/**
- *  当前网络请求的页码
- */
+// 当前网络请求的页码
 @property (nonatomic, assign) NSInteger currentPage;
-
-/**
- *  最后一次网络请求
- */
+// 最后一次网络请求
 @property (nonatomic, strong) DPRequest *lastRequest;
+// 没有符合条件的团购
+@property (nonatomic, weak) UIImageView *nowDataImageView;
+// 总数量
+@property (nonatomic, assign) NSInteger count;
 
 @end
 
@@ -98,13 +75,26 @@ static NSString *const reuseIdentifier = @"deal";
     return [self initWithCollectionViewLayout:layout];
 }
 
+- (UIImageView *)nowDataImageView
+{
+    if (_nowDataImageView == nil) {
+        UIImageView *nowDataImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_deals_empty"]];
+        [self.view addSubview:nowDataImageView];
+        [nowDataImageView autoCenterInSuperview];
+        _nowDataImageView = nowDataImageView;
+    }
+    
+    return _nowDataImageView;
+}
+
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     NSInteger count = (size.width == 1024) ? 3 : 2;
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
     CGFloat inset = (size.width - layout.itemSize.width * count) / (count + 1);
-    [self.collectionView setContentInset:UIEdgeInsetsMake(inset, inset, inset, inset)];
+    // 注意:这里不能设置成collectionView
+    [layout setSectionInset:UIEdgeInsetsMake(inset, inset, inset, inset)];
     [layout setMinimumLineSpacing:inset];
 }
 
@@ -113,16 +103,15 @@ static NSString *const reuseIdentifier = @"deal";
     
     [self.collectionView setBackgroundColor:JSSColor(230, 230, 230)];
     [self.collectionView setAlwaysBounceVertical:YES];
+    
+    // 上拉刷新
     [self.collectionView addFooterWithTarget:self action:@selector(loadMoreDeals)];
+    // 下拉刷新
+    [self.collectionView addHeaderWithTarget:self action:@selector(loadNewDeals)];
     
-    /**
-     *  添加导航栏左边的子控件
-     */
+    // 添加导航栏左边的子控件
     [self setupLeftView];
-    
-    /**
-     *  添加导航栏右边的子控件
-     */
+    // 添加导航栏右边的子控件
     [self setupRightView];
     
     // 接收城市通知
@@ -144,10 +133,13 @@ static NSString *const reuseIdentifier = @"deal";
 {
     self.selectedSort = notification.userInfo[JSSClickSortButton];
     JSSTopView *sortTopView = (JSSTopView *)self.sortItem.customView;
-    [sortTopView setTitle:self.selectedSort.label];
+    [sortTopView setSubTitle:self.selectedSort.label];
     [self dismissViewControllerAnimated:YES completion:nil];
     
     [self loadNewDeals];
+    
+    // 刷新提示
+    [self.collectionView headerBeginRefreshing];
 }
 
 /**
@@ -172,6 +164,9 @@ static NSString *const reuseIdentifier = @"deal";
     [self dismissViewControllerAnimated:YES completion:nil];
     
     [self loadNewDeals];
+    
+    // 刷新提示
+    [self.collectionView headerBeginRefreshing];
 }
 
 /**
@@ -197,6 +192,9 @@ static NSString *const reuseIdentifier = @"deal";
     [self dismissViewControllerAnimated:YES completion:nil];
     
     [self loadNewDeals];
+    
+    // 刷新提示
+    [self.collectionView headerBeginRefreshing];
 }
 
 /**
@@ -209,6 +207,9 @@ static NSString *const reuseIdentifier = @"deal";
     [districtTopView setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
     
     [self loadNewDeals];
+    
+    // 刷新提示
+    [self.collectionView headerBeginRefreshing];
 }
 
 - (void)loadDeals
@@ -262,6 +263,8 @@ static NSString *const reuseIdentifier = @"deal";
         return;
     }
     
+    self.count = [result[@"total_count"] integerValue];
+    
     NSArray *deals = [JSSDeal objectArrayWithKeyValuesArray:result[@"deals"]];
     if (self.currentPage == 1) {
         [self.deals removeAllObjects];
@@ -270,12 +273,25 @@ static NSString *const reuseIdentifier = @"deal";
     
     // 刷新数据
     [self.collectionView reloadData];
+    
+    // 结束刷新
     [self.collectionView footerEndRefreshing];
+    [self.collectionView headerEndRefreshing];
 }
 
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
 {
     NSLog(@"请求失败-%@", error);
+    
+    [MBProgressHUD showError:@"网络繁忙,请稍后再试!" toView:self.view];
+    
+    if (self.currentPage > 1) {
+        self.currentPage--;
+    }
+    
+    // 结束刷新
+    [self.collectionView footerEndRefreshing];
+    [self.collectionView headerEndRefreshing];
 }
 
 - (void)dealloc
@@ -306,6 +322,7 @@ static NSString *const reuseIdentifier = @"deal";
     
     // 4.排序
     JSSTopView *sortView = [JSSTopView topView];
+    [sortView setTitle:@"排序"];
     [sortView setIocn:@"icon_sort" highIcon:@"icon_sort_highlighted"];
     [sortView dealWithTarget:self andAction:@selector(sortViewDidClick)];
     UIBarButtonItem *sortItem = [[UIBarButtonItem alloc] initWithCustomView:sortView];
@@ -364,6 +381,10 @@ static NSString *const reuseIdentifier = @"deal";
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     [self viewWillTransitionToSize:CGSizeMake(self.collectionView.width, 0) withTransitionCoordinator:nil];
+   
+    [self.collectionView setFooterHidden:self.deals.count == self.count];
+    
+    [self.nowDataImageView setHidden:self.deals.count != 0];
     
     return 1;
 }
