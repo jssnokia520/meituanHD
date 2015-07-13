@@ -16,6 +16,7 @@
 #import "UIView+Extension.h"
 #import "JSSDealCell.h"
 #import "MJExtension.h"
+#import "JSSDetailViewController.h"
 
 @interface JSSDealsViewController () <DPRequestDelegate>
 
@@ -175,6 +176,13 @@ static NSString *const reuseIdentifier = @"deal";
     JSSDealCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.deal = self.deals[indexPath.item];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    JSSDetailViewController *detailVc = [[JSSDetailViewController alloc] init];
+    [detailVc setDeal:self.deals[indexPath.item]];
+    [self presentViewController:detailVc animated:YES completion:nil];
 }
 
 @end

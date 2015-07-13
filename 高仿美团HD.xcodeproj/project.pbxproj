@@ -79,6 +79,10 @@
 		7F80A6661B526A8100A6F94C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F80A6631B526A8100A6F94C /* MBProgressHUD.m */; };
 		7F92667F1B529CF300E4ED79 /* JSSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F92667E1B529CF300E4ED79 /* JSSSearchViewController.m */; };
 		7F9266821B52A16900E4ED79 /* JSSDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9266811B52A16900E4ED79 /* JSSDealsViewController.m */; };
+		7F9C36B61B53D0C600DC119D /* JSSCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C36B51B53D0C600DC119D /* JSSCollectViewController.m */; };
+		7F9C36B91B53D0D000DC119D /* JSSRecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C36B81B53D0D000DC119D /* JSSRecentViewController.m */; };
+		7F9C36BE1B53D2E800DC119D /* JSSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C36BD1B53D2E800DC119D /* JSSDetailViewController.m */; };
+		7F9C36C01B53D2F500DC119D /* JSSDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F9C36BF1B53D2F500DC119D /* JSSDetailViewController.xib */; };
 		7FBB1F461B538DB9003A1BB3 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB1F431B538DB9003A1BB3 /* AwesomeMenu.m */; };
 		7FBB1F471B538DB9003A1BB3 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB1F451B538DB9003A1BB3 /* AwesomeMenuItem.m */; };
 		7FE06D451B4F55BE006403F3 /* ____HDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D441B4F55BE006403F3 /* ____HDTests.m */; };
@@ -236,6 +240,13 @@
 		7F92667E1B529CF300E4ED79 /* JSSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSSearchViewController.m; sourceTree = "<group>"; };
 		7F9266801B52A16900E4ED79 /* JSSDealsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSDealsViewController.h; sourceTree = "<group>"; };
 		7F9266811B52A16900E4ED79 /* JSSDealsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSDealsViewController.m; sourceTree = "<group>"; };
+		7F9C36B41B53D0C600DC119D /* JSSCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSCollectViewController.h; sourceTree = "<group>"; };
+		7F9C36B51B53D0C600DC119D /* JSSCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSCollectViewController.m; sourceTree = "<group>"; };
+		7F9C36B71B53D0D000DC119D /* JSSRecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSRecentViewController.h; sourceTree = "<group>"; };
+		7F9C36B81B53D0D000DC119D /* JSSRecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSRecentViewController.m; sourceTree = "<group>"; };
+		7F9C36BC1B53D2E800DC119D /* JSSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSDetailViewController.h; sourceTree = "<group>"; };
+		7F9C36BD1B53D2E800DC119D /* JSSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSDetailViewController.m; sourceTree = "<group>"; };
+		7F9C36BF1B53D2F500DC119D /* JSSDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSSDetailViewController.xib; sourceTree = "<group>"; };
 		7FBB1F421B538DB9003A1BB3 /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
 		7FBB1F431B538DB9003A1BB3 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
 		7FBB1F441B538DB9003A1BB3 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
@@ -322,6 +333,9 @@
 		7F450C671B4F7D6100A1CBB6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7F9C36BA1B53D2CC00DC119D /* Detail(详情) */,
+				7F9C36B01B53D0AD00DC119D /* Collect(收藏) */,
+				7F9C36B21B53D0AD00DC119D /* Recent(最近) */,
 				7F450C681B4F7D6100A1CBB6 /* Home(主页) */,
 				7F450C701B4F7D6100A1CBB6 /* Main(主要) */,
 			);
@@ -568,6 +582,58 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		7F9C36B01B53D0AD00DC119D /* Collect(收藏) */ = {
+			isa = PBXGroup;
+			children = (
+				7F9C36B11B53D0AD00DC119D /* Controller */,
+			);
+			path = "Collect(收藏)";
+			sourceTree = "<group>";
+		};
+		7F9C36B11B53D0AD00DC119D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7F9C36B41B53D0C600DC119D /* JSSCollectViewController.h */,
+				7F9C36B51B53D0C600DC119D /* JSSCollectViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7F9C36B21B53D0AD00DC119D /* Recent(最近) */ = {
+			isa = PBXGroup;
+			children = (
+				7F9C36B31B53D0AD00DC119D /* Controller */,
+			);
+			path = "Recent(最近)";
+			sourceTree = "<group>";
+		};
+		7F9C36B31B53D0AD00DC119D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7F9C36B71B53D0D000DC119D /* JSSRecentViewController.h */,
+				7F9C36B81B53D0D000DC119D /* JSSRecentViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7F9C36BA1B53D2CC00DC119D /* Detail(详情) */ = {
+			isa = PBXGroup;
+			children = (
+				7F9C36BB1B53D2CC00DC119D /* Controller */,
+			);
+			path = "Detail(详情)";
+			sourceTree = "<group>";
+		};
+		7F9C36BB1B53D2CC00DC119D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7F9C36BC1B53D2E800DC119D /* JSSDetailViewController.h */,
+				7F9C36BD1B53D2E800DC119D /* JSSDetailViewController.m */,
+				7F9C36BF1B53D2F500DC119D /* JSSDetailViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		7FBB1F411B538DB9003A1BB3 /* AwesomeMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +793,7 @@
 				7F450C961B4FAFE000A1CBB6 /* categories.plist in Resources */,
 				7F450C8C1B4F7DB300A1CBB6 /* JSSDropView.xib in Resources */,
 				7F450C9B1B4FB02700A1CBB6 /* Images.xcassets in Resources */,
+				7F9C36C01B53D2F500DC119D /* JSSDetailViewController.xib in Resources */,
 				7F450C991B4FAFE000A1CBB6 /* sorts.plist in Resources */,
 				7F80A6651B526A8100A6F94C /* MBProgressHUD.bundle in Resources */,
 				7F450CCD1B4FF41D00A1CBB6 /* JSSDistrictController.xib in Resources */,
@@ -792,6 +859,7 @@
 				7F92667F1B529CF300E4ED79 /* JSSSearchViewController.m in Sources */,
 				7F450C821B4F7D6100A1CBB6 /* UIBarButtonItem+Extension.m in Sources */,
 				7F80A65C1B52688200A6F94C /* UIScrollView+MJRefresh.m in Sources */,
+				7F9C36B61B53D0C600DC119D /* JSSCollectViewController.m in Sources */,
 				7F450C7F1B4F7D6100A1CBB6 /* JSSHomeController.m in Sources */,
 				7F5377561B516C9C00C2659D /* DPAPI.m in Sources */,
 				7F450CBF1B4FB29600A1CBB6 /* NSObject+MJMember.m in Sources */,
@@ -816,10 +884,12 @@
 				7F5377571B516C9C00C2659D /* DPRequest.m in Sources */,
 				7F3FAD7C1B5215D60069C9B7 /* SDWebImageDownloaderOperation.m in Sources */,
 				7F3FAD511B520F930069C9B7 /* JSSDealCell.m in Sources */,
+				7F9C36B91B53D0D000DC119D /* JSSRecentViewController.m in Sources */,
 				7F450CD11B4FFDB200A1CBB6 /* JSSCityController.m in Sources */,
 				7F3FAD841B5215D60069C9B7 /* UIImageView+WebCache.m in Sources */,
 				7FFA0BF61B51118100DEA357 /* JSSMetaTool.m in Sources */,
 				7F450CB91B4FB29600A1CBB6 /* MJMember.m in Sources */,
+				7F9C36BE1B53D2E800DC119D /* JSSDetailViewController.m in Sources */,
 				7F450C801B4F7D6100A1CBB6 /* JSSTopView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,6 +24,9 @@
 #import "UIView+Extension.h"
 #import "AwesomeMenu.h"
 #import "UIView+AutoLayout.h"
+#import "JSSCollectViewController.h"
+#import "JSSRecentViewController.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface JSSHomeController () <AwesomeMenuDelegate>
 
@@ -110,7 +113,26 @@
 
 - (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
-    NSLog(@"%ld", idx);
+    switch (idx) {
+        case 1:
+        {
+            JSSCollectViewController *collectVc = [[JSSCollectViewController alloc] init];
+            [collectVc.view setBackgroundColor:[UIColor orangeColor]];
+            [self presentViewController:collectVc animated:YES completion:nil];
+        }
+            break;
+            
+        case 2:
+        {
+            JSSRecentViewController *recentVc = [[JSSRecentViewController alloc] init];
+            [recentVc.view setBackgroundColor:[UIColor greenColor]];
+            [self presentViewController:recentVc animated:YES completion:nil];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 /**
@@ -283,10 +305,14 @@
  */
 - (void)searchClick
 {
-    JSSSearchViewController *searchVc = [[JSSSearchViewController alloc] init];
-    [searchVc setSelectedCity:self.selectedCityName];
-    JSSNavigationController *nav = [[JSSNavigationController alloc] initWithRootViewController:searchVc];
-    [self presentViewController:nav animated:YES completion:nil];
+    if (self.selectedCityName) {
+        JSSSearchViewController *searchVc = [[JSSSearchViewController alloc] init];
+        [searchVc setSelectedCity:self.selectedCityName];
+        JSSNavigationController *nav = [[JSSNavigationController alloc] initWithRootViewController:searchVc];
+        [self presentViewController:nav animated:YES completion:nil];
+    } else {
+        [MBProgressHUD showError:@"当前没有选中的城市!" toView:self.view];
+    }
 }
 
 - (void)setParams:(NSMutableDictionary *)params
