@@ -22,8 +22,10 @@
 #import "JSSSearchViewController.h"
 #import "JSSNavigationController.h"
 #import "UIView+Extension.h"
+#import "AwesomeMenu.h"
+#import "UIView+AutoLayout.h"
 
-@interface JSSHomeController ()
+@interface JSSHomeController () <AwesomeMenuDelegate>
 
 // 分类item
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
@@ -60,6 +62,55 @@
     [JSSNotificationCenter addObserver:self selector:@selector(regionDidSelected:) name:JSSRegionDidSelected object:nil];
     // 接收排序的通知
     [JSSNotificationCenter addObserver:self selector:@selector(sortDidSelected:) name:JSSSortButtonDidClick object:nil];
+    
+    // 创建左下角动画弹出菜单
+    [self setupAweMenu];
+}
+
+/**
+ *  创建左下角动画弹出菜单
+ */
+- (void)setupAweMenu {
+    // 开始按钮
+    AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"icon_pathMenu_background_normal"] highlightedImage:[UIImage imageNamed:@"icon_pathMenu_background_highlighted"] ContentImage:[UIImage imageNamed:@"icon_pathMenu_mainMine_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_mainMine_highlighted"]];
+    
+    // 其他按钮
+    AwesomeMenuItem *item1 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:[UIImage imageNamed:@"icon_pathMenu_background"] ContentImage:[UIImage imageNamed:@"icon_pathMenu_mine_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_mine_highlighted"]];
+    AwesomeMenuItem *item2 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:[UIImage imageNamed:@"icon_pathMenu_background"] ContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_highlighted"]];
+    AwesomeMenuItem *item3 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:[UIImage imageNamed:@"icon_pathMenu_background"] ContentImage:[UIImage imageNamed:@"icon_pathMenu_scan_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_scan_highlighted"]];
+    AwesomeMenuItem *item4 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:[UIImage imageNamed:@"icon_pathMenu_background"] ContentImage:[UIImage imageNamed:@"icon_pathMenu_more_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_more_highlighted"]];
+    
+    NSArray *items = @[item1, item2, item3, item4];
+    
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:CGRectZero startItem:startItem optionMenus:items];
+    [menu setBackgroundColor:[UIColor orangeColor]];
+    [menu setDelegate:self];
+    [menu setAlpha:0.3];
+    [menu setRotateAddButton:NO];
+    [menu setMenuWholeAngle:M_PI_2];
+    [self.view addSubview:menu];
+    
+    [menu autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:-100];
+    [menu autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:300];
+}
+
+- (void)awesomeMenuWillAnimateOpen:(AwesomeMenu *)menu
+{
+    [menu setAlpha:1];
+    [menu setContentImage:[UIImage imageNamed:@"icon_pathMenu_cross_normal"]];
+    [menu setHighlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_cross_highlighted"]];
+}
+
+- (void)awesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu
+{
+    [menu setAlpha:0.3];
+    [menu setContentImage:[UIImage imageNamed:@"icon_pathMenu_mainMine_normal"]];
+    [menu setHighlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_mainMine_highlighted"]];
+}
+
+- (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
+{
+    NSLog(@"%ld", idx);
 }
 
 /**

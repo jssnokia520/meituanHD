@@ -79,6 +79,8 @@
 		7F80A6661B526A8100A6F94C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F80A6631B526A8100A6F94C /* MBProgressHUD.m */; };
 		7F92667F1B529CF300E4ED79 /* JSSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F92667E1B529CF300E4ED79 /* JSSSearchViewController.m */; };
 		7F9266821B52A16900E4ED79 /* JSSDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9266811B52A16900E4ED79 /* JSSDealsViewController.m */; };
+		7FBB1F461B538DB9003A1BB3 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB1F431B538DB9003A1BB3 /* AwesomeMenu.m */; };
+		7FBB1F471B538DB9003A1BB3 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB1F451B538DB9003A1BB3 /* AwesomeMenuItem.m */; };
 		7FE06D451B4F55BE006403F3 /* ____HDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE06D441B4F55BE006403F3 /* ____HDTests.m */; };
 		7FFA0BE91B50C0DB00DEA357 /* JSSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BE81B50C0DB00DEA357 /* JSSSearchController.m */; };
 		7FFA0BEC1B50C18D00DEA357 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA0BEB1B50C18D00DEA357 /* UIView+AutoLayout.m */; };
@@ -234,6 +236,10 @@
 		7F92667E1B529CF300E4ED79 /* JSSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSSearchViewController.m; sourceTree = "<group>"; };
 		7F9266801B52A16900E4ED79 /* JSSDealsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSDealsViewController.h; sourceTree = "<group>"; };
 		7F9266811B52A16900E4ED79 /* JSSDealsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSDealsViewController.m; sourceTree = "<group>"; };
+		7FBB1F421B538DB9003A1BB3 /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
+		7FBB1F431B538DB9003A1BB3 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
+		7FBB1F441B538DB9003A1BB3 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
+		7FBB1F451B538DB9003A1BB3 /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
 		7FE06D251B4F55BE006403F3 /* 高仿美团HD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "高仿美团HD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE06D291B4F55BE006403F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FE06D3E1B4F55BE006403F3 /* 高仿美团HDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "高仿美团HDTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,6 +464,7 @@
 		7F450C9C1B4FB27C00A1CBB6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				7FBB1F411B538DB9003A1BB3 /* AwesomeMenu */,
 				7F80A65E1B526A8100A6F94C /* MBProgressHUD */,
 				7F80A6451B52688200A6F94C /* MJRefresh */,
 				7F3FAD541B5215D60069C9B7 /* SDWebImage */,
@@ -559,6 +566,17 @@
 				7F92667E1B529CF300E4ED79 /* JSSSearchViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		7FBB1F411B538DB9003A1BB3 /* AwesomeMenu */ = {
+			isa = PBXGroup;
+			children = (
+				7FBB1F421B538DB9003A1BB3 /* AwesomeMenu.h */,
+				7FBB1F431B538DB9003A1BB3 /* AwesomeMenu.m */,
+				7FBB1F441B538DB9003A1BB3 /* AwesomeMenuItem.h */,
+				7FBB1F451B538DB9003A1BB3 /* AwesomeMenuItem.m */,
+			);
+			path = AwesomeMenu;
 			sourceTree = "<group>";
 		};
 		7FE06D1C1B4F55BE006403F3 = {
@@ -741,6 +759,7 @@
 				7F450C901B4FAE1100A1CBB6 /* JSSCategory.m in Sources */,
 				7F3FAD831B5215D60069C9B7 /* UIImageView+HighlightedWebCache.m in Sources */,
 				7F80A65A1B52688200A6F94C /* MJRefreshHeaderView.m in Sources */,
+				7FBB1F471B538DB9003A1BB3 /* AwesomeMenuItem.m in Sources */,
 				7F80A6571B52688200A6F94C /* MJRefreshBaseView.m in Sources */,
 				7F450CD51B5001ED00A1CBB6 /* JSSCityGroup.m in Sources */,
 				7F3FAD771B5215D60069C9B7 /* NSData+ImageContentType.m in Sources */,
@@ -784,6 +803,7 @@
 				7F3FAD7E1B5215D60069C9B7 /* SDWebImagePrefetcher.m in Sources */,
 				7FFA0BEF1B50EF1900DEA357 /* JSSCity.m in Sources */,
 				7F450CC21B4FB35E00A1CBB6 /* JSSCategoryController.m in Sources */,
+				7FBB1F461B538DB9003A1BB3 /* AwesomeMenu.m in Sources */,
 				7FFA0BF21B50EFE600DEA357 /* JSSRegion.m in Sources */,
 				7F3FAD801B5215D60069C9B7 /* UIImage+GIF.m in Sources */,
 				7F450CBD1B4FB29600A1CBB6 /* NSObject+MJCoding.m in Sources */,
