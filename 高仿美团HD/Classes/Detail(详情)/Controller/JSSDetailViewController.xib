@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JSSDetailViewController">
             <connections>
+                <outlet property="loadingView" destination="PJ3-Bx-Jye" id="T1h-BV-vH6"/>
                 <outlet property="view" destination="iN0-l3-epB" id="bbM-Uz-bBV"/>
                 <outlet property="webView" destination="fg0-vX-fsB" id="GTJ-Lw-nut"/>
             </connections>
@@ -24,18 +25,22 @@
                 </view>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fg0-vX-fsB">
                     <rect key="frame" x="401" y="0.0" width="623" height="768"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </webView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="PJ3-Bx-Jye">
+                    <rect key="frame" x="694" y="366" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="pLR-HI-Nd2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BOf-te-1xo"/>
                 <constraint firstItem="fg0-vX-fsB" firstAttribute="leading" secondItem="pLR-HI-Nd2" secondAttribute="trailing" constant="20" id="EF0-gG-QMM"/>
+                <constraint firstItem="PJ3-Bx-Jye" firstAttribute="centerX" secondItem="fg0-vX-fsB" secondAttribute="centerX" id="MSY-UK-qic"/>
                 <constraint firstItem="fg0-vX-fsB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RVY-5J-7HX"/>
                 <constraint firstAttribute="bottom" secondItem="fg0-vX-fsB" secondAttribute="bottom" id="V83-9F-FIB"/>
                 <constraint firstAttribute="trailing" secondItem="fg0-vX-fsB" secondAttribute="trailing" id="YgS-Ov-FpM"/>
                 <constraint firstAttribute="bottom" secondItem="pLR-HI-Nd2" secondAttribute="bottom" id="aPR-ax-hUa"/>
                 <constraint firstItem="pLR-HI-Nd2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bTw-Ne-BR3"/>
+                <constraint firstItem="PJ3-Bx-Jye" firstAttribute="centerY" secondItem="fg0-vX-fsB" secondAttribute="centerY" id="ne5-4O-18c"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>

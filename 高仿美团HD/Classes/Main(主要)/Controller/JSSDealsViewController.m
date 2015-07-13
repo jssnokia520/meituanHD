@@ -40,7 +40,7 @@ static NSString *const reuseIdentifier = @"deal";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.collectionView setBackgroundColor:JSSColor(230, 230, 230)];
+    [self.collectionView setBackgroundColor:JSSGlobalColor];
     [self.collectionView setAlwaysBounceVertical:YES];
     [self.collectionView registerNib:[UINib nibWithNibName:@"JSSDealCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
