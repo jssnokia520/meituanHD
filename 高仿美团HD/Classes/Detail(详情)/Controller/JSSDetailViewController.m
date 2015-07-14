@@ -27,6 +27,10 @@
     return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
 }
 
+- (IBAction)close {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,7 +47,6 @@
     if (![webView.request.URL.absoluteString containsString:@"http://m.dianping.com/tuan/deal/moreinfo"]) { // 不是"更多图文详情"的时候应该加载"更多图文详情"
         NSString *ID = [self.deal.deal_id substringFromIndex:[self.deal.deal_id rangeOfString:@"-"].location + 1];
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://m.dianping.com/tuan/deal/moreinfo/%@", ID]];
-        NSLog(@"%@", url.absoluteString);
         [webView loadRequest:[NSURLRequest requestWithURL:url]];
     } else { // 更多图文详情
         NSMutableString *js = [NSMutableString string];
