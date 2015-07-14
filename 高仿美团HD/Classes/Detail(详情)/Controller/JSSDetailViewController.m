@@ -14,6 +14,8 @@
 #import "DPAPI.h"
 #import "MJExtension.h"
 #import "JSSRestrictions.h"
+#import "JSSDealTool.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface JSSDetailViewController () <UIWebViewDelegate,  DPRequestDelegate>
 
@@ -28,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *refundExpire;
 @property (weak, nonatomic) IBOutlet UIButton *countDown;
 @property (weak, nonatomic) IBOutlet UIButton *purchaseCount;
+@property (weak, nonatomic) IBOutlet UIButton *collectButton;
 
 @end
 
@@ -70,6 +73,9 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"deal_id"] = self.deal.deal_id;
     [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+    
+    // 判断此团购是否已经收藏
+    [self.collectButton setSelected:[JSSDealTool isCollectWithDeal:self.deal]];
 }
 
 /**
@@ -124,6 +130,23 @@
         
         [self.loadingView stopAnimating];
         [self.webView setHidden:NO];
+    }
+}
+
+/**
+ *  收藏团购
+ */
+- (IBAction)collectDeal {
+    if ([self.collectButton isSelected]) {
+        [JSSDealTool removeCollectWithDeal:self.deal];
+        [self.collectButton setSelected:NO];
+        
+        [MBProgressHUD showSuccess:@"取消收藏" toView:self.view];
+    } else {
+        [JSSDealTool addCollectWithDeal:self.deal];
+        [self.collectButton setSelected:YES];
+        
+        [MBProgressHUD showSuccess:@"收藏成功" toView:self.view];
     }
 }
 

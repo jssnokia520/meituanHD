@@ -7,7 +7,10 @@
 //
 
 #import "JSSRestrictions.h"
+#import "MJExtension.h"
 
 @implementation JSSRestrictions
+
+MJCodingImplementation
 
 @end

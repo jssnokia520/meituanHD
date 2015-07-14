@@ -23,6 +23,6 @@
 /**
  *  附加信息(一般为团购信息的特别提示)
  */
-@property (nonatomic, assign) NSString *special_tips;
+@property (nonatomic, copy) NSString *special_tips;
 
 @end

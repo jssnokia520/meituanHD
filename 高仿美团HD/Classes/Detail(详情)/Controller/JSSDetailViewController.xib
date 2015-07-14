@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JSSDetailViewController">
             <connections>
+                <outlet property="collectButton" destination="NVd-nj-Nyh" id="TJn-Y5-Pdt"/>
                 <outlet property="countDown" destination="bag-Sh-ftC" id="rzl-h1-ZCz"/>
                 <outlet property="currentPrice" destination="fc1-Dq-bjJ" id="ckE-L2-jLZ"/>
                 <outlet property="descLabel" destination="MqL-JM-XKf" id="RtB-lh-tuH"/>
@@ -136,7 +137,11 @@
                                     <state key="normal" image="icon_collect">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <state key="selected" image="icon_collect_highlighted"/>
                                     <state key="highlighted" image="icon_collect_highlighted"/>
+                                    <connections>
+                                        <action selector="collectDeal" destination="-1" eventType="touchUpInside" id="n6h-ee-lVW"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpT-yt-QBs" userLabel="分享">
                                     <rect key="frame" x="270" y="30" width="50" height="50"/>
