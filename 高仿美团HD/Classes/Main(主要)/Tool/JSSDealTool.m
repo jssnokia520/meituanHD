@@ -71,5 +71,14 @@ static FMDatabase *_db;;
     return [set intForColumn:@"deal_count"] == 1;
 }
 
+/**
+ *  当前数据库中的团购数量
+ */
++ (NSInteger)countOfCurrentDeals
+{
+    FMResultSet *set = [_db executeQueryWithFormat:@"SELECT count(*) AS deal_count FROM t_collect_deal"];
+    [set next];
+    return [set intForColumn:@"deal_count"];
+}
 
 @end

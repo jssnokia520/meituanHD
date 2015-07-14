@@ -358,6 +358,7 @@
 		7F450C671B4F7D6100A1CBB6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7F92667B1B529CBF00E4ED79 /* Search(搜索) */,
 				7F9C36BA1B53D2CC00DC119D /* Detail(详情) */,
 				7F9C36B01B53D0AD00DC119D /* Collect(收藏) */,
 				7F9C36B21B53D0AD00DC119D /* Recent(最近) */,
@@ -370,7 +371,6 @@
 		7F450C681B4F7D6100A1CBB6 /* Home(主页) */ = {
 			isa = PBXGroup;
 			children = (
-				7F92667B1B529CBF00E4ED79 /* Search(搜索) */,
 				7FFA0BF31B51116000DEA357 /* Tool */,
 				7F450C8D1B4FADFF00A1CBB6 /* Model */,
 				7F450C691B4F7D6100A1CBB6 /* Controller */,
@@ -626,7 +626,8 @@
 			children = (
 				7F92667C1B529CBF00E4ED79 /* Controller */,
 			);
-			path = "Search(搜索)";
+			name = "Search(搜索)";
+			path = "Home(主页)/Search(搜索)";
 			sourceTree = "<group>";
 		};
 		7F92667C1B529CBF00E4ED79 /* Controller */ = {

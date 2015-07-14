@@ -113,20 +113,22 @@
 
 - (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
+    [menu setAlpha:0.3];
+    
     switch (idx) {
         case 1:
         {
             JSSCollectViewController *collectVc = [[JSSCollectViewController alloc] init];
-            [collectVc.view setBackgroundColor:[UIColor orangeColor]];
-            [self presentViewController:collectVc animated:YES completion:nil];
+            JSSNavigationController *nav = [[JSSNavigationController alloc] initWithRootViewController:collectVc];
+            [self presentViewController:nav animated:YES completion:nil];
         }
             break;
             
         case 2:
         {
             JSSRecentViewController *recentVc = [[JSSRecentViewController alloc] init];
-            [recentVc.view setBackgroundColor:[UIColor greenColor]];
-            [self presentViewController:recentVc animated:YES completion:nil];
+            JSSNavigationController *nav = [[JSSNavigationController alloc] initWithRootViewController:recentVc];
+            [self presentViewController:nav animated:YES completion:nil];
         }
             break;
             

@@ -17,6 +17,11 @@
 + (NSArray *)currentCollectWithPage:(NSInteger)page;
 
 /**
+ *  当前数据库中的团购数量
+ */
++ (NSInteger)countOfCurrentDeals;
+
+/**
  *  添加一个团购
  */
 + (void)addCollectWithDeal:(JSSDeal *)deal;

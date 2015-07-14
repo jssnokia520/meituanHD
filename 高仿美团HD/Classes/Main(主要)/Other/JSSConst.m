@@ -24,4 +24,8 @@ NSString * const JSSSelectedSubRegionName = @"JSSSelectedSubRegionName";
 NSString * const JSSSortButtonDidClick = @"JSSSortButtonDidClick";
 NSString * const JSSClickSortButton = @"JSSClickSortButton";
 
+NSString * const JSSCollectStateChanged = @"JSSCollectStateChanged";
+NSString * const JSSAddCollect = @"JSSAddCollect";
+NSString * const JSSRemoveCollect = @"JSSRemoveCollect";
+
 @end

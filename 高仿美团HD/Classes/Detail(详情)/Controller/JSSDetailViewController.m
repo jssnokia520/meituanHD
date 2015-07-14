@@ -86,6 +86,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *deadDate = [formatter dateFromString:dateStr];
+    deadDate = [deadDate dateByAddingTimeInterval:24 * 3600];
     NSDate *nowDate = [NSDate date];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -137,17 +138,25 @@
  *  收藏团购
  */
 - (IBAction)collectDeal {
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    
     if ([self.collectButton isSelected]) {
         [JSSDealTool removeCollectWithDeal:self.deal];
         [self.collectButton setSelected:NO];
         
         [MBProgressHUD showSuccess:@"取消收藏" toView:self.view];
+        
+        info[JSSRemoveCollect] = self.deal;
     } else {
         [JSSDealTool addCollectWithDeal:self.deal];
         [self.collectButton setSelected:YES];
         
         [MBProgressHUD showSuccess:@"收藏成功" toView:self.view];
+        
+        info[JSSAddCollect] = self.deal;
     }
+    
+    [JSSNotificationCenter postNotificationName:JSSCollectStateChanged object:nil userInfo:info];
 }
 
 @end

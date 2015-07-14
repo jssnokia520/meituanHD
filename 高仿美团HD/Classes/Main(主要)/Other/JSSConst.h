@@ -29,4 +29,8 @@ extern NSString * const JSSSelectedSubRegionName;
 extern NSString * const JSSSortButtonDidClick;
 extern NSString * const JSSClickSortButton;
 
+extern NSString * const JSSCollectStateChanged;
+extern NSString * const JSSAddCollect;
+extern NSString * const JSSRemoveCollect;
+
 @end
