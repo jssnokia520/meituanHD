@@ -77,6 +77,7 @@
 		7F80A6641B526A8100A6F94C /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F80A6601B526A8100A6F94C /* MBProgressHUD+MJ.m */; };
 		7F80A6651B526A8100A6F94C /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7F80A6611B526A8100A6F94C /* MBProgressHUD.bundle */; };
 		7F80A6661B526A8100A6F94C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F80A6631B526A8100A6F94C /* MBProgressHUD.m */; };
+		7F8FFB551B55021D00D1ED2E /* JSSRestrictions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8FFB541B55021D00D1ED2E /* JSSRestrictions.m */; };
 		7F92667F1B529CF300E4ED79 /* JSSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F92667E1B529CF300E4ED79 /* JSSSearchViewController.m */; };
 		7F9266821B52A16900E4ED79 /* JSSDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9266811B52A16900E4ED79 /* JSSDealsViewController.m */; };
 		7F9C36B61B53D0C600DC119D /* JSSCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C36B51B53D0C600DC119D /* JSSCollectViewController.m */; };
@@ -236,6 +237,8 @@
 		7F80A6611B526A8100A6F94C /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		7F80A6621B526A8100A6F94C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7F80A6631B526A8100A6F94C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		7F8FFB531B55021D00D1ED2E /* JSSRestrictions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSRestrictions.h; sourceTree = "<group>"; };
+		7F8FFB541B55021D00D1ED2E /* JSSRestrictions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSRestrictions.m; sourceTree = "<group>"; };
 		7F92667D1B529CF300E4ED79 /* JSSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSSearchViewController.h; sourceTree = "<group>"; };
 		7F92667E1B529CF300E4ED79 /* JSSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSSearchViewController.m; sourceTree = "<group>"; };
 		7F9266801B52A16900E4ED79 /* JSSDealsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSDealsViewController.h; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 				7FFA0BF81B51308F00DEA357 /* JSSSort.m */,
 				7F2EEC381B52070C00BB578B /* JSSDeal.h */,
 				7F2EEC391B52070C00BB578B /* JSSDeal.m */,
+				7F8FFB531B55021D00D1ED2E /* JSSRestrictions.h */,
+				7F8FFB541B55021D00D1ED2E /* JSSRestrictions.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -835,6 +840,7 @@
 				7F450C841B4F7D6100A1CBB6 /* JSSNavigationController.m in Sources */,
 				7FFA0BF91B51308F00DEA357 /* JSSSort.m in Sources */,
 				7F450C871B4F7D6100A1CBB6 /* main.m in Sources */,
+				7F8FFB551B55021D00D1ED2E /* JSSRestrictions.m in Sources */,
 				7F450C861B4F7D6100A1CBB6 /* JSSConst.m in Sources */,
 				7F3FAD791B5215D60069C9B7 /* SDWebImageCompat.m in Sources */,
 				7F3FAD7D1B5215D60069C9B7 /* SDWebImageManager.m in Sources */,

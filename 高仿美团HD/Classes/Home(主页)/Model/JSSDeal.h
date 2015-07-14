@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+@class JSSRestrictions;
 
 @interface JSSDeal : NSObject
 
@@ -60,5 +61,15 @@
  *  团购HTML5页面链接，适用于移动应用和联网车载应用
  */
 @property (nonatomic, copy) NSString *deal_h5_url;
+
+/**
+ *  团购单的截止购买日期
+ */
+@property (nonatomic, copy) NSString *purchase_deadline;
+
+/**
+ *  团购限制条件
+ */
+@property (nonatomic, strong) JSSRestrictions *restrictions;
 
 @end

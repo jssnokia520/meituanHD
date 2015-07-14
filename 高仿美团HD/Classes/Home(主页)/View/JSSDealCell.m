@@ -51,8 +51,10 @@
 {
     NSRange range = [number.stringValue rangeOfString:@"."];
     if (range.location != NSNotFound) {
-        NSString *price = [number.stringValue substringWithRange:NSMakeRange(0, range.location + 2)];
-        return [NSString stringWithFormat:@"￥%@", price];
+        NSString *priceStr = [number.stringValue stringByAppendingString:@"0"];
+        NSString *price = [priceStr substringWithRange:NSMakeRange(0, range.location + 3)];
+        NSString *newPrice = [price stringByReplacingOccurrencesOfString:@"0" withString:@"" options:NSBackwardsSearch range:NSMakeRange(price.length - 1, 1)];
+        return [NSString stringWithFormat:@"￥%@", newPrice];
     }
     
     return [NSString stringWithFormat:@"￥%@", number.stringValue];

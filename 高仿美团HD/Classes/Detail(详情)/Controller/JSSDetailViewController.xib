@@ -6,7 +6,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JSSDetailViewController">
             <connections>
+                <outlet property="countDown" destination="bag-Sh-ftC" id="rzl-h1-ZCz"/>
+                <outlet property="currentPrice" destination="fc1-Dq-bjJ" id="ckE-L2-jLZ"/>
+                <outlet property="descLabel" destination="MqL-JM-XKf" id="RtB-lh-tuH"/>
+                <outlet property="imageView" destination="hrB-gD-ZNE" id="4Tb-kZ-SA7"/>
+                <outlet property="listPrice" destination="EgR-zd-Grd" id="VfK-ib-FDs"/>
                 <outlet property="loadingView" destination="PJ3-Bx-Jye" id="T1h-BV-vH6"/>
+                <outlet property="purchaseCount" destination="9vo-fY-ssJ" id="JG7-uw-PaE"/>
+                <outlet property="refundAnyTime" destination="Us6-aS-owz" id="BcQ-Fk-fJd"/>
+                <outlet property="refundExpire" destination="DId-5Q-cd6" id="WzO-j9-T1I"/>
+                <outlet property="titleLabel" destination="V4d-Xo-rkM" id="scB-u6-IKI"/>
                 <outlet property="view" destination="iN0-l3-epB" id="bbM-Uz-bBV"/>
                 <outlet property="webView" destination="fg0-vX-fsB" id="GTJ-Lw-nut"/>
             </connections>
@@ -77,19 +86,19 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4d-Xo-rkM" userLabel="标题">
-                            <rect key="frame" x="20" y="319" width="341" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="20" y="319" width="341" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="描述" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqL-JM-XKf" userLabel="描述">
-                            <rect key="frame" x="20" y="360" width="341" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="描述" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqL-JM-XKf" userLabel="描述">
+                            <rect key="frame" x="20" y="361" width="341" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dT1-vQ-NOO">
-                            <rect key="frame" x="20" y="401" width="341" height="80"/>
+                            <rect key="frame" x="20" y="396" width="341" height="80"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLA-83-Fqg">
                                     <rect key="frame" x="0.0" y="79" width="341" height="1"/>
@@ -98,15 +107,6 @@
                                         <constraint firstAttribute="height" constant="1" id="MPm-Lq-6ca"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现价" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fc1-Dq-bjJ" userLabel="现价">
-                                    <rect key="frame" x="0.0" y="0.0" width="42" height="25"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="25" id="rGn-k8-DWR"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原价" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgR-zd-Grd" userLabel="原价" customClass="JSSListPriceLabel">
                                     <rect key="frame" x="52" y="10" width="26" height="15"/>
                                     <constraints>
@@ -145,6 +145,15 @@
                                     </state>
                                     <state key="highlighted" image="icon_share_highlighted"/>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现价" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fc1-Dq-bjJ" userLabel="现价">
+                                    <rect key="frame" x="0.0" y="0.0" width="42" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="rGn-k8-DWR"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -168,40 +177,50 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWa-4t-3z8">
-                            <rect key="frame" x="20" y="491" width="341" height="60"/>
+                            <rect key="frame" x="20" y="486" width="341" height="60"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us6-aS-owz">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us6-aS-owz">
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="150" id="TE9-ug-rp8"/>
+                                        <constraint firstAttribute="width" constant="180" id="TE9-ug-rp8"/>
                                         <constraint firstAttribute="height" constant="30" id="dK7-44-wpv"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="支持随时退">
+                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="支持随时退款" image="icon_order_unrefundable">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="selected" image="icon_order_refundable"/>
+                                </button>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DId-5Q-cd6">
+                                    <rect key="frame" x="0.0" y="30" width="180" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="支持过期退款" image="icon_order_unrefundable">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="selected" image="icon_order_refundable"/>
+                                </button>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bag-Sh-ftC">
+                                    <rect key="frame" x="161" y="0.0" width="180" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="倒计时" image="icon_deal_timer">
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DId-5Q-cd6">
-                                    <rect key="frame" x="0.0" y="30" width="150" height="30"/>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vo-fY-ssJ">
+                                    <rect key="frame" x="161" y="30" width="180" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="支持过期退">
-                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bag-Sh-ftC">
-                                    <rect key="frame" x="191" y="0.0" width="150" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="倒计时">
-                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vo-fY-ssJ">
-                                    <rect key="frame" x="191" y="30" width="150" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="出售量">
+                                    <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="出售量" image="icon_deal_soldNumber">
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -274,6 +293,10 @@
         <image name="icon_back_highlighted" width="30" height="30"/>
         <image name="icon_collect" width="86" height="87"/>
         <image name="icon_collect_highlighted" width="86" height="87"/>
+        <image name="icon_deal_soldNumber" width="17" height="17"/>
+        <image name="icon_deal_timer" width="17" height="17"/>
+        <image name="icon_order_refundable" width="17" height="17"/>
+        <image name="icon_order_unrefundable" width="17" height="17"/>
         <image name="icon_share" width="86" height="87"/>
         <image name="icon_share_highlighted" width="86" height="87"/>
         <image name="placeholder_deal" width="273" height="172"/>

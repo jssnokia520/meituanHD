@@ -9,11 +9,25 @@
 #import "JSSDetailViewController.h"
 #import "JSSDeal.h"
 #import "JSSConst.h"
+#import "JSSListPriceLabel.h"
+#import "UIImageView+WebCache.h"
+#import "DPAPI.h"
+#import "MJExtension.h"
+#import "JSSRestrictions.h"
 
-@interface JSSDetailViewController () <UIWebViewDelegate>
+@interface JSSDetailViewController () <UIWebViewDelegate,  DPRequestDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentPrice;
+@property (weak, nonatomic) IBOutlet JSSListPriceLabel *listPrice;
+@property (weak, nonatomic) IBOutlet UIButton *refundAnyTime;
+@property (weak, nonatomic) IBOutlet UIButton *refundExpire;
+@property (weak, nonatomic) IBOutlet UIButton *countDown;
+@property (weak, nonatomic) IBOutlet UIButton *purchaseCount;
 
 @end
 
@@ -40,6 +54,51 @@
     [self.webView setHidden:YES];
     [self.webView setDelegate:self];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.deal.deal_h5_url]]];
+    
+    
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.deal.image_url]];
+    [self.titleLabel setText:self.deal.title];
+    [self.descLabel setText:self.deal.desc];
+    [self.currentPrice setText:[NSString stringWithFormat:@"￥%@", self.deal.current_price.stringValue]];
+    [self.listPrice setText:[NSString stringWithFormat:@"原价￥%@", self.deal.list_price.stringValue]];
+    [self.purchaseCount setTitle:[NSString stringWithFormat:@"已售%ld", self.deal.purchase_count] forState:UIControlStateNormal];
+    
+    // 设置倒计时
+    [self setupCountDown:self.deal.purchase_deadline];
+    
+    DPAPI *api = [[DPAPI alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"deal_id"] = self.deal.deal_id;
+    [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+}
+
+/**
+ *  设置倒计时
+ */
+- (void)setupCountDown:(NSString *)dateStr
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *deadDate = [formatter dateFromString:dateStr];
+    NSDate *nowDate = [NSDate date];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendarUnit unit = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSDateComponents *result = [calendar components:unit fromDate:nowDate toDate:deadDate options:0];
+    
+    if (result.day > 365) {
+        [self.countDown setTitle:@"一年内不过期" forState:UIControlStateNormal];
+    } else {
+        [self.countDown setTitle:[NSString stringWithFormat:@"剩余%ld天%ld时%ld分", result.day, result.hour, result.minute] forState:UIControlStateNormal];
+    }
+}
+
+- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
+{
+    self.deal = [JSSDeal objectWithKeyValues:[result[@"deals"] lastObject]];
+    JSSRestrictions *restrictions = self.deal.restrictions;
+    [self.refundAnyTime setSelected:restrictions.is_refundable];
+    [self.refundExpire setSelected:restrictions.is_refundable];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
