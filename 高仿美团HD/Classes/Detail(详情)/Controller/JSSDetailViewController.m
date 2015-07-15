@@ -53,6 +53,8 @@
 {
     [super viewDidLoad];
     
+    [JSSDealTool addRecentBrowseDeal:self.deal];
+    
     [self.view setBackgroundColor:JSSGlobalColor];
     
     [self.webView setHidden:YES];

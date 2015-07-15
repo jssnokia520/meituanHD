@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JSSRecentViewController : UIViewController
+@interface JSSRecentViewController : UICollectionViewController
 
 @end

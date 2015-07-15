@@ -113,7 +113,7 @@
 
 - (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
-    [menu setAlpha:0.3];
+    [self awesomeMenuDidFinishAnimationClose:menu];
     
     switch (idx) {
         case 1:

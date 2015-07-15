@@ -37,4 +37,24 @@
 + (BOOL)isCollectWithDeal:(JSSDeal *)deal;
 
 
+/**
+ *  最近第几页浏览的团购
+ */
++ (NSArray *)recentBrowseDeals:(NSInteger)page;
+
+/**
+ *  当前数据库中最近浏览的团购数量
+ */
++ (NSInteger)countOfRecentBrowseDeals;
+
+/**
+ *  添加一个最近浏览的团购
+ */
++ (void)addRecentBrowseDeal:(JSSDeal *)deal;
+
+/**
+ *  移除一个最近浏览的团购
+ */
++ (void)removeRecentBrowseDeal:(JSSDeal *)deal;
+
 @end
