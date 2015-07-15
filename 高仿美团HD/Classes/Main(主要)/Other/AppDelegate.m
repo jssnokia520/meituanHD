@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "JSSHomeController.h"
 #import "JSSNavigationController.h"
+#import "UMSocial.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,8 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [UMSocialData setAppKey:@"55a66d1c67e58e5436004bbc"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     JSSNavigationController *navigationVc = [[JSSNavigationController alloc] initWithRootViewController:[[JSSHomeController alloc] init]];
     [self.window setRootViewController:navigationVc];

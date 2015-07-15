@@ -16,6 +16,7 @@
 #import "JSSRestrictions.h"
 #import "JSSDealTool.h"
 #import "MBProgressHUD+MJ.h"
+#import "UMSocial.h"
 
 @interface JSSDetailViewController () <UIWebViewDelegate,  DPRequestDelegate>
 
@@ -157,6 +158,20 @@
     }
     
     [JSSNotificationCenter postNotificationName:JSSCollectStateChanged object:nil userInfo:info];
+}
+
+- (IBAction)share {
+    NSString *shareText = [NSString stringWithFormat:@"%@ %@", self.deal.desc, self.deal.deal_url];
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"55a66d1c67e58e5436004bbc"
+                                      shareText:shareText
+                                     shareImage:self.imageView.image
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToFacebook,UMShareToDouban,UMShareToQzone,UMShareToRenren,UMShareToSms,UMShareToTwitter,nil]
+                                       delegate:nil];
+}
+
+- (IBAction)buyNow {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.deal.deal_h5_url]];
 }
 
 @end

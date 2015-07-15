@@ -127,6 +127,9 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <state key="highlighted" title="立即抢购" backgroundImage="bg_deal_purchaseButton_highlighted"/>
+                                    <connections>
+                                        <action selector="buyNow" destination="-1" eventType="touchUpInside" id="g9u-YZ-sop"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVd-nj-Nyh" userLabel="收藏">
                                     <rect key="frame" x="200" y="30" width="50" height="50"/>
@@ -149,6 +152,9 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <state key="highlighted" image="icon_share_highlighted"/>
+                                    <connections>
+                                        <action selector="share" destination="-1" eventType="touchUpInside" id="QEn-ho-OrV"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现价" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fc1-Dq-bjJ" userLabel="现价">
                                     <rect key="frame" x="0.0" y="0.0" width="42" height="25"/>
