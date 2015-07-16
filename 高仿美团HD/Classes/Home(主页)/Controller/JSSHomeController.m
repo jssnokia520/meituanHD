@@ -52,6 +52,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.selectedCityName = @"成都";
+    
     // 添加导航栏左边的子控件
     [self setupLeftView];
     // 添加导航栏右边的子控件
@@ -68,6 +70,9 @@
     
     // 创建左下角动画弹出菜单
     [self setupAweMenu];
+
+    // 首次请求网络
+    [self loadNewDeals];
 }
 
 /**
@@ -234,12 +239,17 @@
     
     // 2.类别
     JSSTopView *categoryView = [JSSTopView topView];
+    [categoryView setTitle:@"全部分类"];
+    [categoryView setSubTitle:nil];
+    [categoryView setIocn:@"icon_category_-1" highIcon:@"icon_category_highlighted_-1"];
     [categoryView dealWithTarget:self andAction:@selector(categoryViewDidClick)];
     UIBarButtonItem *categoryItem = [[UIBarButtonItem alloc] initWithCustomView:categoryView];
     self.categoryItem = categoryItem;
     
     // 3.地区
     JSSTopView *districtView = [JSSTopView topView];
+    [districtView setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
+    [districtView setSubTitle:nil];
     [districtView dealWithTarget:self andAction:@selector(districtViewDidClick)];
     UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtView];
     self.districtItem = districtItem;
@@ -247,6 +257,7 @@
     // 4.排序
     JSSTopView *sortView = [JSSTopView topView];
     [sortView setTitle:@"排序"];
+    [sortView setSubTitle:@"默认排序"];
     [sortView setIocn:@"icon_sort" highIcon:@"icon_sort_highlighted"];
     [sortView dealWithTarget:self andAction:@selector(sortViewDidClick)];
     UIBarButtonItem *sortItem = [[UIBarButtonItem alloc] initWithCustomView:sortView];
@@ -294,12 +305,7 @@
  */
 - (void)setupRightView
 {
-    UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highlightedImage:@"icon_map_highlighted"];
-    [mapItem.customView setWidth:60];
-    
-    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:self action:@selector(searchClick) image:@"icon_search" highlightedImage:@"icon_search_highlighted"];
-    [searchItem.customView setWidth:60];
-    [self.navigationItem setRightBarButtonItems:@[mapItem, searchItem]];
+    [self.navigationItem setRightBarButtonItem:[UIBarButtonItem itemWithTarget:self action:@selector(searchClick) image:@"icon_search" highlightedImage:@"icon_search_highlighted"]];
 }
 
 /**

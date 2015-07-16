@@ -42,7 +42,7 @@ static NSString *const reuseIdentifier = @"deal";
     // 下拉刷新
     [self.collectionView addFooterWithTarget:self action:@selector(loadMoreDeals)];
     
-    [self setTitle:@"我的收藏"];
+    [self setTitle:@"最近浏览"];
     [self.navigationItem setLeftBarButtonItem:[UIBarButtonItem itemWithTarget:self action:@selector(close) image:@"icon_back" highlightedImage:@"icon_back_highlighted"]];
     
     [self loadMoreDeals];

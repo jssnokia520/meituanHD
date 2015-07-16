@@ -12,4 +12,9 @@
 
 - (void)setParams:(NSMutableDictionary *)params;
 
+/**
+ *  进行网络请求
+ */
+- (void)loadNewDeals;
+
 @end

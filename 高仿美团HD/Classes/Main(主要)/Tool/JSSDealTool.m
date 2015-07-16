@@ -33,7 +33,7 @@ static FMDatabase *_db;;
  */
 + (NSArray *)currentCollectWithPage:(NSInteger)page
 {
-    NSInteger length = 20;
+    NSInteger length = 12;
     NSInteger location = (page - 1) * length;
     FMResultSet *set = [_db executeQueryWithFormat:@"SELECT * FROM t_collect_deal ORDER BY id DESC LIMIT %ld, %ld", location, length];
     NSMutableArray *deals = [NSMutableArray array];
@@ -87,7 +87,7 @@ static FMDatabase *_db;;
  */
 + (NSArray *)recentBrowseDeals:(NSInteger)page
 {
-    NSInteger length = 20;
+    NSInteger length = 12;
     NSInteger location = (page - 1) * length;
     FMResultSet *set = [_db executeQueryWithFormat:@"SELECT * FROM t_recent_deal ORDER BY id DESC LIMIT %ld, %ld", location, length];
     NSMutableArray *deals = [NSMutableArray array];
